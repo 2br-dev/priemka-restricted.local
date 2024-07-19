@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приёмная комиссия КубГАУ 2024</title>
+    <link rel="stylesheet" href="/lpk-2024-restricted/css/master.css">
+    <!-- Favico -->
+    <link rel="icon" type="image/svg+xml" href="/lpk-2024-restricted/img/favico/favicon.svg" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/lpk-2024-restricted/img/favico/favicon.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="/lpk-2024-restricted/img/favico/favicon_light.svg" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/png" href="/lpk-2024-restricted/img/favico/favicon_light.png" media="(prefers-color-scheme: dark)">
+    <!-- /Favico -->
+</head>
+
+<body>
+    <header>
+        <div class="logo"></div>
+        <div class="level-switcher">
+            <ul>
+                <li>
+                    <input type="radio" checked value="Бакалавриат/специалитет" name="level" id="level1">
+                    <label for="level1">Бакалавриат/специалитет</label>
+
+                </li>
+                <li>
+                    <input type="radio" value="Магистратура" name="level" id="level2">
+                    <label for="level2">Магистратура</label>
+
+                </li>
+                <li>
+                    <input type="radio" value="Аспирантура" name="level" id="level3">
+                    <label for="level3">Аспирантура</label>
+                </li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Поиск">
+        </div>
+    </header>
+    <main>
+        <section id="calculator">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2>Узнай, куда поступишь на бюджет!</h2>
+                        <div class="calculator-app" data-level="Бакалавриат/специалитет">
+                            <div class="calculator-head">
+                                <ul class="pseudo-tabs">
+                                    <li class="pseudo-tab active">
+                                        <input type="radio" name="level" id="l1" checked value="Бакалавриат/специалитет">
+                                        <label for="l1">Бакалавриат/специалитет</label>
+                                    </li>
+                                    <li class="pseudo-tab">
+                                        <input type="radio" name="level" id="l2" value="Магистратура">
+                                        <label for="l2">Магистратура</label>
+                                    </li>
+                                    <li class="pseudo-tab disabled">
+                                        <!-- <input type="radio" name="level" id="l3" value="Аспирантура"> -->
+                                        <label for="l3">Аспирантура</label>
+                                    </li>
+                                </ul>
+                                <div class="quick-search">
+                                    <input type="search" name="search" placeholder="Поиск">
+                                </div>
+                            </div>
+                            <div class="calculator-body">
+                                <input type="search" name="search" placeholder="Поиск" class="mobile-search">
+                                <p class="large mt0 fogged intro">
+                                    Выбери свои предметы ЕГЭ (минимум 3) и нажми «Применить». Или воспользуйся Поиском, если точно знаешь, что искать
+                                </p>
+                                <div class="filter">
+                                    <div class="min-score">
+                                        <div class="input-field">
+                                            <input type="number" placeholder="Балл абитуриента" id="minScore">
+                                            <label>Балл абитуриента</label>
+                                            <div class="indicator"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tags">
+                                        @@loop('./parts/eg.html', './data/tags.json')
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <a href="javascript:void(0);" id="calc-reset" class="bttn-outline">Сброс</a>
+                                    <a href="javascript:void(0);" id="calc-apply" class="bttn">Применить</a>
+                                </div>
+                                <h3>Факультеты:</h3>
+                                <div id="output">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="center-align">
+        <div class="row">
+            <div class="col s12">
+                <a target="_blank" rel="nofollow" href="https://kubsau.ru/index-main.php" class="bttn-white">На основной сайт</a>
+                <a target="_blank" rel="nofollow" href="https://kubsau.ru/sveden/common/" class="bttn-outline"><i>Сведения</i> Об <span>образовательном </span>учреждении</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col xl4 offset-xl4 l6 offset-l3 m8 offset-m2 s10 offset-s1 xs12">
+                <p>
+                    © <span id="year"></span> ФГБОУ ВО «Кубанский государственный аграрный университет имени И. Т. Трубилина»
+                    350044, Россия, г. Краснодар, ул. Калинина, 13
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <a href="https://2br.agency" rel="nofollow" target="_blank">
+                    <img data-src="/lpk-2024-restricted/img/2br.svg" alt="Брегдинг и коммуникации" class="lazy responsive-img" width="70" />
+                </a>
+            </div>
+            <div class="col s12">
+                <p>Дизайн страницы – <a href="https://2br.agency" rel="nofollow" target="_blank" class="agency-link">2br.agency</a></p>
+            </div>
+
+        </div>
+    </footer>
+    <script src="/lpk-2024-restricted/js/master.js"></script>
+</body>
+
+</html>

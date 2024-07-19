@@ -1,0 +1,45 @@
+@import "../frameworks/boxicons.min";
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap');
+
+// $fontname: 'Cygre';
+$fontname: 'Wix Madefor Text';
+
+body{
+    font-family: $fontname, 'Roboto', sans-serif;
+    font-size: clamp(16px, 2vw, 18px);
+    -webkit-font-smoothing: subpixel-antialiased;
+	color: $text;
+    line-height: 1.4em;
+
+    & h1{
+        position: absolute;
+        color: transparent;
+        user-select: none;
+    }
+
+    & h2{
+        font-size: clamp(20px, 3vw, 40px);
+        line-height: 1.4em;
+    }
+
+    & h3{
+        font-size: clamp(20px, 3vw, 24px);
+        font-weight: normal;
+        line-height: 1.4em;
+    }
+    
+    & h4{
+        font-size: clamp(16px, 3vw, 32px);
+        line-height: 1.4em;
+    }
+    
+    & .small{
+        font-size: clamp(10px, 2vw, 12px);
+        line-height: 1.6em;
+    }
+
+    & .large{
+        font-size: clamp(18px, 2vw, 32px);
+        line-height: 1.6em;
+    }
+}

@@ -1,0 +1,28 @@
+header{
+	display: flex;
+	justify-content: space-between;
+	background-color: $secondary;
+	align-items: center;
+	padding: 15px 30px;
+
+	& input{
+		line-height: 1.6em;
+		padding: .1em .8em;
+		border-radius: 30px;
+		border: 0;
+		box-shadow: 0 0 0 1px #fff inset;
+		background-color: transparent;
+		color: #fff;
+		transition: background-color .2s, color .2s;
+
+		&::placeholder{
+			color: rgba(#fff, .2);
+		}
+
+		&:focus{
+			outline: none;
+			background-color: #fff;
+			color: #000;
+		}
+	}
+}

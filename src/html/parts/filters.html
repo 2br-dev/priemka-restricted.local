@@ -1,0 +1,42 @@
+<form class="filters-wrapper" id="filters">
+	<div class="filter-block">
+		<div class="filter-header">Форма обучения</div>
+		<div class="filter-content">
+			<ul class="segmented-control">
+				<li><input checked type="radio" name="form" id="form1" value="Очная"><label for="form1">Очная</label></li>
+				<li><input type="radio" name="form" id="form2" value="Заочная"><label for="form2">Заочная</label></li>
+				<li><input type="radio" name="form" id="form3" value="Очно-заочная"><label for="form3">Очно-заочная</label></li>
+			</ul>
+		</div>
+	</div>
+	<div class="filter-block">
+		<div class="filter-header">Основа обучения</div>
+		<div class="filter-content">
+			<ul class="segmented-control">
+				<li><input checked type="radio" name="base" id="base1" value="Бюджетная"><label for="base1">Бюджетная</label></li>
+				<li><input type="radio" name="base" id="base2" value="Договорная"><label for="base2">Договорная</label></li>
+			</ul>
+		</div>
+	</div>
+	<div class="filter-block">
+		<div class="filter-content">
+			<div class="input-field">
+				<input type="number" name="minScore" min="0" max="999" step="1">
+				<label>Суммарный балл абитуриента</label>
+			</div>
+		</div>
+	</div>
+	<div class="filter-block">
+		<div class="filter-header">Результаты ЕГЭ</div>
+		<div class="filter-content">
+			<ul class="tags">
+				@@loop('./tag.html', './data/tags.json')
+			</ul>
+		</div>
+	</div>
+	<div class="separator"></div>
+	<div class="filter-actions">
+		<a href="javascript:void(0);" id="reset" class="bttn-text">Сброс</a>
+		<a href="javascript:void(0);" id="submit" class="bttn">Подобрать</a>
+	</div>
+</form>

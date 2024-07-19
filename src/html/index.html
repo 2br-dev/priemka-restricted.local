@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/lpk-2024-restricted/css/master.css">
+</head>
+<body>
+	@@include('./parts/header.html')
+	<main>
+		<div class="row flex">
+			<div class="col xl3 l4">
+				@@include('./parts/filters.html')
+			</div>
+			<div class="col xl9 l8">
+				<h1>Направления и факультеты</h1>
+				<div id="output" data-level="Бакалавриат/специалитет"></div>
+			</div>
+		</div>
+	</main>
+	<script src="/lpk-2024-restricted/js/master.js"></script>
+</body>
+</html>

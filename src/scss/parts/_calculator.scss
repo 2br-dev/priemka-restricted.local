@@ -1,0 +1,248 @@
+#output{
+
+	&[data-level="Магистратура"]{
+
+		& .spec-card{
+
+			& .requirements{
+				display: none;
+			}
+
+			& .numbers{
+				display: flex;
+				flex-wrap: wrap;
+
+				& .number-block{
+					width: 50%;
+				}
+			}
+		}
+	}
+
+	& .section-wrapper{
+
+		// display: none;
+
+		& .section-content{
+			display: grid;
+			gap: 20px;
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	& .faculty-header{
+		width: 100%;
+		margin: 0;
+		padding: clamp(5px, 2vw, 20px);
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		position: relative;
+
+		&:hover{
+			background-color: rgba(black, .05);
+		}
+
+		& .folder-arrow{
+			width: 2em;
+			aspect-ratio: 1 / 1;
+			margin-right: 10px;
+			box-shadow: 0 5px 20px rgba(black, .05);
+			border-radius: 50%;
+			position: relative;
+			flex-shrink: 0;
+
+			&:before{
+				content: '';
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background-image: url(/lpk-2024-restricted/img/folder_arrow.svg);
+				background-position: center center;
+				background-repeat: no-repeat;
+				border-radius: 50%;
+				background-size: 50% auto;
+				transition: transform .4s;
+			}
+		}
+
+		&.active .folder-arrow:before{
+			transform: rotate(180deg);
+		}
+
+		&:not(:last-of-type){
+			border-bottom: 1px solid $secondary;
+		}
+		
+		& h4{
+			margin: 0;
+		}
+	}
+	
+	& .section-wrapper{
+		display: none;
+		padding: 40px 0;
+	}
+
+	& .spec-card{
+
+		background-color: #fff;
+		border-radius: 10px;
+		overflow: hidden;
+
+		& .card-header{
+			display: flex;
+			padding: clamp(10px, 2vw, 20px);
+
+			& .speciality{
+
+				flex-grow: 1;
+				padding-right: 20px;
+
+				& h3, & p{
+					margin: 0;
+				}
+			}
+
+			& .min-score{
+				margin-top: calc(clamp(10px, 2vw, 20px) * -1);
+				padding: clamp(10px, 2vw, 20px) 10px;
+				background-color: $secondary;
+				color: #fff;
+				text-align: center;
+
+
+				& i, & span{
+					display: block;
+					font-style: normal;
+				}
+
+				& i{
+					font-size: clamp(12px, 2vw, 14px);
+					white-space: nowrap;
+				}
+
+				& span{
+					font-size: clamp(26px, 3vw, 36px);
+					font-weight: 500;
+					line-height: 1em;
+				}
+			}
+		}
+
+		& .selected-data{
+			padding: 6px 20px;
+			text-align: center;
+			background-color: #E6F7F5;
+			color: $secondary;
+		}
+
+		& .details{
+			display: flex;
+			padding: clamp(10px, 2vw, 20px);
+
+			& .numbers{
+
+				min-width: 40%;
+				flex-grow: 1;
+
+				& .number-block{
+
+					&:not(:last-of-type){
+						margin-bottom: 10px;
+					}
+
+					& .title{
+						font-size: clamp(12px, 2vw, 14px);
+						color: $fogged;
+					}
+
+					& .number{
+						font-size: clamp(18px, 3vw, 24px);
+						position: relative;
+						
+						& a{
+							color: $text;
+						}
+
+						& .remark-popup{
+							position: absolute;
+							bottom: 100%;
+							z-index: 2;
+							background-color: #fff;
+							font-size: clamp(16px, 3vw, 18px);
+							padding: 20px;
+							display: flex;
+							align-items: flex-start;
+							border-radius: 6px;
+							box-shadow: 0 2px 4px rgba(black, .4);
+							transition: opacity .3s, transform .3s;
+							transform: translateY(20px);
+							opacity: 0;
+							pointer-events: none;
+
+							&.open{
+								transform: translateY(0);
+								opacity: 1;
+								pointer-events: all;
+							}
+
+							& a{
+								transform: scale(1.3);
+								color: $text;
+								cursor: pointer;
+							}
+						}
+					}
+				}
+			}
+
+			& .requirements{
+				min-width: 60%;
+				flex-grow: 1;
+				
+				& .requirement-header{
+					font-size: clamp(12px, 2vw, 14px);
+					color: $fogged;
+					
+					&:not(:first-of-type){
+						margin-top: 10px;
+					}
+				}
+
+				& .requirement{
+					font-size: clamp(18px, 3vw, 24px);
+					line-height: 1.4em;
+
+					& .min{
+						font-size: clamp(16px, 3vw, 18px);
+						color: $fogged;
+					}
+				}
+			}
+		}
+
+		& .note{
+			padding: clamp(10px, 2vw, 20px);
+			padding-top: 0;
+			font-size: clamp(12px, 2vw, 14px);
+			color: $fogged;
+			text-align: center;
+			border-top: 1px solid #ccc;
+			padding-top: 10px;
+		}
+	}
+
+	& .nulltext{
+		height: 100%;
+		border: 2px dashed #ccc;
+		border-radius: 10px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+}

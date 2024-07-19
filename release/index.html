@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/lpk-2024-restricted/css/master.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="https://kubsau.ru">
+                <img src="/lpk-2024-restricted/img/logo.svg" />
+            </a>
+        </div>
+        <div class="level-switcher">
+            <ul class="segmented-control light">
+                <li>
+                    <input type="radio" checked value="Бакалавриат/специалитет" name="level" id="level1">
+                    <label for="level1">Бакалавриат/специалитет</label>
+
+                </li>
+                <li>
+                    <input type="radio" value="Магистратура" name="level" id="level2">
+                    <label for="level2">Магистратура</label>
+
+                </li>
+                <li>
+                    <input type="radio" value="Аспирантура" name="level" id="level3">
+                    <label for="level3">Аспирантура</label>
+                </li>
+            </ul>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Поиск" name="search" id="search">
+        </div>
+    </header>
+    <main>
+        <div class="row flex">
+            <div class="col xl3 l4">
+                <form class="filters-wrapper" id="filters">
+                    <div class="filter-block">
+                        <div class="filter-header">Форма обучения</div>
+                        <div class="filter-content">
+                            <ul class="segmented-control">
+                                <li><input checked type="radio" name="form" id="form1" value="Очная"><label for="form1">Очная</label></li>
+                                <li><input type="radio" name="form" id="form2" value="Заочная"><label for="form2">Заочная</label></li>
+                                <li><input type="radio" name="form" id="form3" value="Очно-заочная"><label for="form3">Очно-заочная</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-block">
+                        <div class="filter-header">Основа обучения</div>
+                        <div class="filter-content">
+                            <ul class="segmented-control">
+                                <li><input checked type="radio" name="base" id="base1" value="Бюджетная"><label for="base1">Бюджетная</label></li>
+                                <li><input type="radio" name="base" id="base2" value="Договорная"><label for="base2">Договорная</label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="filter-block">
+                        <div class="filter-content">
+                            <div class="input-field">
+                                <input type="number" name="minScore" min="0" max="999" step="1">
+                                <label>Суммарный балл абитуриента</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-block">
+                        <div class="filter-header">Результаты ЕГЭ</div>
+                        <div class="filter-content">
+                            <ul class="tags">
+                                <li class="tag required">
+                                    <input id="tag-1" type="checkbox" name="result[]" value="Русский язык">
+                                    <label for="tag-1">Русский язык</label>
+                                </li>
+                                <li class="tag required">
+                                    <input id="tag-2" type="checkbox" name="result[]" value="Математика">
+                                    <label for="tag-2">Математика</label>
+                                </li>
+                                <li class="tag required">
+                                    <input id="tag-3" type="checkbox" name="result[]" value="Биология">
+                                    <label for="tag-3">Биология</label>
+                                </li>
+                                <li class="tag required">
+                                    <input id="tag-4" type="checkbox" name="result[]" value="География">
+                                    <label for="tag-4">География</label>
+                                </li>
+                                <li class="tag">
+                                    <input id="tag-5" type="checkbox" name="result[]" value="Обществознание">
+                                    <label for="tag-5">Обществознание</label>
+                                </li>
+                                <li class="tag">
+                                    <input id="tag-6" type="checkbox" name="result[]" value="Иностранный язык">
+                                    <label for="tag-6">Иностранный язык</label>
+                                </li>
+                                <li class="tag">
+                                    <input id="tag-7" type="checkbox" name="result[]" value="Информатика и ИКТ">
+                                    <label for="tag-7">Информатика и ИКТ</label>
+                                </li>
+                                <li class="tag">
+                                    <input id="tag-8" type="checkbox" name="result[]" value="История">
+                                    <label for="tag-8">История</label>
+                                </li>
+                                <li class="tag">
+                                    <input id="tag-9" type="checkbox" name="result[]" value="Физика">
+                                    <label for="tag-9">Физика</label>
+                                </li>
+                                <li class="tag">
+                                    <input id="tag-10" type="checkbox" name="result[]" value="Химия">
+                                    <label for="tag-10">Химия</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="filter-actions">
+                        <a href="javascript:void(0);" id="reset" class="bttn-text">Сброс</a>
+                        <a href="javascript:void(0);" id="submit" class="bttn">Подобрать</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col xl9 l8">
+                <h1>Направления и факультеты</h1>
+                <div id="output" data-level="Бакалавриат/специалитет"></div>
+            </div>
+        </div>
+    </main>
+    <script src="/lpk-2024-restricted/js/master.js"></script>
+</body>
+
+</html>

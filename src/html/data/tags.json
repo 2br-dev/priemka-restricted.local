@@ -1,0 +1,12 @@
+[
+	{"id": 1, "name": "Русский язык", "class": "tag required" },
+	{"id": 2, "name": "Математика", "class": "tag required" },
+	{"id": 3, "name": "Биология", "class": "tag required" },
+	{"id": 4, "name": "География", "class": "tag required" },
+	{"id": 5, "name": "Обществознание", "class": "tag" },
+	{"id": 6, "name": "Иностранный язык", "class": "tag" },
+	{"id": 7, "name": "Информатика и ИКТ", "class": "tag" },
+	{"id": 8, "name": "История", "class": "tag" },
+	{"id": 9, "name": "Физика", "class": "tag" },
+	{"id": 10, "name": "Химия", "class": "tag" }
+]
