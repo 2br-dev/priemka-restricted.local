@@ -12859,6 +12859,10 @@ body .large {
     line-height: 1.6em;
 }
 
+#output {
+    scroll-behavior: smooth;
+}
+
 #output[data-level="Магистратура"] .spec-card .requirements {
     display: none;
 }
@@ -13573,4 +13577,32 @@ html body #output::-webkit-scrollbar-thumb {
 
 html body #output::-webkit-scrollbar-thumb:hover {
     background-color: #1FAD96;
+}
+
+html body #scroll-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: #FF8001;
+    border-radius: 50%;
+    transition: transform .4s, opacity .4s, box-shadow .2s;
+    pointer-events: none;
+    transform: translateY(40px);
+    opacity: 0;
+    z-index: 20;
+}
+
+html body #scroll-top svg {
+    fill: #fff;
+}
+
+html body #scroll-top.visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
 }

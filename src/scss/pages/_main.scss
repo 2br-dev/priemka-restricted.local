@@ -267,5 +267,33 @@ html{
 				}
 			}
 		}
+
+		& #scroll-top{
+			position: fixed;
+			bottom: 40px;
+			right: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 60px;
+			height: 60px;
+			background: $primary;
+			border-radius: 50%;
+			transition: transform .4s, opacity .4s, box-shadow .2s;
+			pointer-events: none;
+			transform: translateY(40px);
+			opacity: 0;
+			z-index: 20;
+
+			& svg{
+				fill: #fff;
+			}
+
+			&.visible{
+				transform: translateY(0);
+				opacity: 1;
+				pointer-events: all;
+			}
+		}
 	}
 }

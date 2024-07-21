@@ -13,22 +13,42 @@ $(() => {
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 	});
 
-	$('body').on('input', '[name="search"]', quickSearch); 			//Быстрый поиск
-	$('body').on('change', '[name="level"]', selectLevel); 			//Уровень образования
-	$('body').on('change', '[name="form"]', switchForm);			//Форма образования
-	$('body').on('change', '[name="base"]', switchBase);			//Фин. база
-	$('body').on('change', '[name="score"]', collectFilters);		//Минимальный балл
-	$('body').on('change', '[name="result[]"]', collectFilters);	//Результаты ЕГЭ
-	$('body').on('click', '#submit', filter);						//Запуск фильтров
-	$('body').on('click', '#reset', reset);							//Сброс фильтров
-	$('body').on('click', '.faculty-header', toggleFaculty);		//Отображение содержимого факультета
+	$('body').on('input', '[name="search"]', quickSearch); 			// Быстрый поиск
+	$('body').on('change', '[name="level"]', selectLevel); 			// Уровень образования
+	$('body').on('change', '[name="form"]', switchForm);			// Форма образования
+	$('body').on('change', '[name="base"]', switchBase);			// Фин. база
+	$('body').on('change', '[name="score"]', collectFilters);		// Минимальный балл
+	$('body').on('change', '[name="result[]"]', collectFilters);	// Результаты ЕГЭ
+	$('body').on('click', '#submit', filter);						// Запуск фильтров
+	$('body').on('click', '#reset', reset);							// Сброс фильтров
+	$('body').on('click', '.faculty-header', toggleFaculty);		// Отображение содержимого факультета
 	$('body').on('click', '[data-remark]', openRemark);				// Открытие пояснения к стоимости
 	$('body').on('click', '.remark-close-trigger', closeRemark);	// Закрытие пояснения к стоимости по клику на X
 	$('body').on('click', '#toggle-rows', toggleRows);				// Переключение видимости строк
+	$('body').on('click', '#scroll-top', scrollTop);				// Переключение видимости строк
+
+	let output = document.querySelector('#output') as HTMLElement	
+	output.addEventListener('scroll', toggleUpButton)				// Отображение кнопки (прокрутить до верха)
 
 	$('body').on('click', '.spec-card', openModal);
 
-})
+});
+
+// Промотка наверх
+function scrollTop() {
+	let output = document.querySelector('#output') as HTMLElement
+	output.scrollTop = 0;
+}
+
+// Отображение кнопки (прокрутить до верха)
+function toggleUpButton(){
+	let scrollTop = (document.querySelector('#output') as HTMLElement).scrollTop;
+	if(scrollTop > 20){
+		$('#scroll-top').addClass('visible');
+	}else{
+		$('#scroll-top').removeClass('visible');
+	}
+}
 
 // Переключение открытости строк
 function toggleRows(e?:JQuery.ClickEvent){
@@ -46,7 +66,7 @@ function toggleRows(e?:JQuery.ClickEvent){
 			$el.removeClass('active');
 			$el.next().slideUp();
 		}
-	})
+	});
 }
 
 // Модальное окно с описанием
@@ -88,7 +108,7 @@ function closeRemark(e:JQuery.ClickEvent){
 
 	setTimeout(() => {
 		remark.remove();
-	}, 500)
+	}, 500);
 }
 
 // Открытие пояснений к цене
@@ -233,6 +253,7 @@ function quickSearch(){
 	if(calculator){
 		calculator.filterParams.quickSearch = (document.querySelector('[name="search"]') as HTMLInputElement).value;
 		calculator.render();
+		toggleRowsButton();
 	}
 }
 
@@ -243,8 +264,10 @@ function selectLevel(){
 		
 		(document.querySelector('#filters') as HTMLFormElement).reset();
 		calculator.reset();
-
 		calculator.filterParams.level = level;
+
+		rowsVisible = false;
+		$('#toggle-rows').text('Развернуть все');
 
 		if(level !== "Бакалавриат/специалитет"){
 			$('[name="result[]"]').prop('checked', false);
