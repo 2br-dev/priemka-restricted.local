@@ -18,6 +18,11 @@ class CardModal{
 		$('body').on('click', '#close-modal', this.closeModal);
 		$('body').on('change', '[name="modal-form"]', this.switchForm.bind(this));
 
+		// Выбор формы обучения
+		let form = this.cardData.selectedForm?.name;
+
+		$(`[value="${form}"]`).prop('checked', true);
+
 		setTimeout(() => {
 			$('.modal-wrapper').addClass('open');
 		}, 80);

@@ -13174,6 +13174,7 @@ body .large {
 
 .modal-wrapper .modal .modal-header h3 {
     font-size: clamp(22px, 3vw, 26px);
+    font-weight: 500;
     color: #1FAD96;
     line-height: 1.2em;
     margin: 0;
@@ -13197,6 +13198,7 @@ body .large {
 
 .modal-wrapper .modal .modal-content .numbers h4 {
     font-size: clamp(22px, 3vw, 26px);
+    font-weight: 500;
     margin: 0;
 }
 
