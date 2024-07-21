@@ -12,13 +12,12 @@ body{
     line-height: 1.4em;
 
     & h1{
-        position: absolute;
-        color: transparent;
-        user-select: none;
+		font-size: clamp(22px, 2.5vw, 28px);
+        line-height: 1.2em;
     }
-
+	
     & h2{
-        font-size: clamp(20px, 2.5vw, 40px);
+		font-size: clamp(24px, 2.5vw, 40px);
         line-height: 1.2em;
     }
 

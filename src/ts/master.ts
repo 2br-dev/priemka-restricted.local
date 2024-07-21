@@ -5,6 +5,8 @@ import CardModal from "./lib/card_modal";
 
 let calculator:Calculator;
 
+let rowsVisible:boolean = false;
+
 // Инициализация
 $(() => {
 	calculator = new Calculator('#output', '/lpk-2024-restricted/data/data.json', () => {
@@ -22,10 +24,30 @@ $(() => {
 	$('body').on('click', '.faculty-header', toggleFaculty);		//Отображение содержимого факультета
 	$('body').on('click', '[data-remark]', openRemark);				// Открытие пояснения к стоимости
 	$('body').on('click', '.remark-close-trigger', closeRemark);	// Закрытие пояснения к стоимости по клику на X
+	$('body').on('click', '#toggle-rows', toggleRows);				// Переключение видимости строк
 
 	$('body').on('click', '.spec-card', openModal);
 
 })
+
+// Переключение открытости строк
+function toggleRows(e?:JQuery.ClickEvent){
+	e?.preventDefault();
+	rowsVisible = !rowsVisible;
+	let buttonText = rowsVisible ? 'Свернуть все' : 'Развернуть все';
+	$('#toggle-rows').text(buttonText);
+
+	$('.faculty-header').each((index:number, el:HTMLElement) => {
+		let $el = $(el);
+		if(rowsVisible){
+			$el.addClass('active');
+			$el.next().slideDown();
+		}else{
+			$el.removeClass('active');
+			$el.next().slideUp();
+		}
+	})
+}
 
 // Модальное окно с описанием
 function openModal(e:JQuery.ClickEvent){
@@ -115,6 +137,18 @@ function toggleFaculty(e:JQuery.ClickEvent){
 	sectionCards.slideToggle({
 		duration: 'fast'
 	});
+
+	// Если все строки развёрнуты вручную
+	if($('.faculty-header.active').length === $('.faculty-header').length){
+		rowsVisible = true;
+		$('#toggle-rows').text('Свернуть все');
+	}
+
+	// Если все строки свёрнуты вручную
+	if($('.faculty-header:not(.active)').length === $('.faculty-header').length){
+		rowsVisible = false;
+		$('#toggle-rows').text('Развернуть все');
+	}
 }
 
 // Запуск фильтрации
@@ -124,6 +158,14 @@ function filter(){
 		return null;
 	}
 	calculator?.render();
+	rowsVisible = false;
+	toggleRows();
+
+	if(!$('.faculty-header').length){
+		$('#toggle-rows').addClass('disabled');
+	}else{
+		$('#toggle-rows').removeClass('disabled');
+	}
 }
 
 // Сброс фильтров
@@ -132,6 +174,8 @@ function reset(){
 	(document.querySelector('#filters') as HTMLFormElement).reset();
 	(document.querySelector('#top-form') as HTMLFormElement).reset();
 	$('#output').scrollTop(0);
+	$('#toggle-rows').text('Развернуть все');
+	rowsVisible = false;
 	calculator?.render();
 }
 
@@ -159,6 +203,7 @@ function switchBase(){
 	calculator.filterParams.base = (document.querySelector('[name="base"]:checked') as HTMLInputElement).value === 'free' ? EducationBase.FREE : EducationBase.PAID;
 	calculator.render();
 	RestoreRowsVisibility(rows)
+	toggleRowsButton();
 
 }
 
@@ -170,6 +215,16 @@ function switchForm(){
 		calculator.filterParams.form = form;
 		calculator.render();
 		RestoreRowsVisibility(rows);
+		toggleRowsButton();
+	}
+}
+
+// Установка доступности кнопки "Развернуть все"
+function toggleRowsButton(){
+	if(!$('.faculty-header').length){
+		$('#toggle-rows').addClass('disabled');
+	}else{
+		$('#toggle-rows').removeClass('disabled');
 	}
 }
 
@@ -202,6 +257,7 @@ function selectLevel(){
 
 		calculator.container.setAttribute('data-level', level);
 		calculator.render();
+		toggleRowsButton();
 	}
 }
 

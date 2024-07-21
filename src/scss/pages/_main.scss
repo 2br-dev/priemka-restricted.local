@@ -19,6 +19,11 @@ html{
 		flex-direction: column;
 		min-height: 100vh;
 
+		& .disabled{
+			opacity: .3;
+			pointer-events: none;
+		}
+
 		& main{
 			flex-grow: 1;
 			padding: clamp(5px, 3vw, 40px);
@@ -218,10 +223,32 @@ html{
 					background-color: rgba(black, .1);
 				}
 			}
+
+			&-outlined{
+				@extend .bttn-text;
+				background-color: transparent;
+				box-shadow: 0 0 0 1px $primary inset;
+				color: $primary;
+
+				&:hover{
+					background-color: rgba(black, .05);
+				}
+			}
+		}
+
+		& .output-header{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 40px;
+
+			& h1{
+				margin: 0;
+			}
 		}
 
 		& #output{
-			height: calc(100vh - clamp(10px, 6vw, 80px) - 150px);
+			height: calc(100vh - 275px);
 			overflow: auto;
 			padding: 20px;
 			

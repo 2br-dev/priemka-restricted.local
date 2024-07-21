@@ -12829,15 +12829,12 @@ body {
 }
 
 body h1 {
-    position: absolute;
-    color: transparent;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+    font-size: clamp(22px, 2.5vw, 28px);
+    line-height: 1.2em;
 }
 
 body h2 {
-    font-size: clamp(20px, 2.5vw, 40px);
+    font-size: clamp(24px, 2.5vw, 40px);
     line-height: 1.2em;
 }
 
@@ -12873,6 +12870,10 @@ body .large {
 
 #output[data-level="Магистратура"] .spec-card .numbers .number-block {
     width: 50%;
+}
+
+#output[data-level="Магистратура"] .spec-card .min-score {
+    display: none;
 }
 
 #output .section-wrapper .section-content {
@@ -13120,11 +13121,9 @@ body .large {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.filter-block .disabled {
-    opacity: .3;
-    pointer-events: none;
+    background-color: rgba(250, 250, 250, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .modal-wrapper {
@@ -13343,6 +13342,11 @@ html body {
     min-height: 100vh;
 }
 
+html body .disabled {
+    opacity: .3;
+    pointer-events: none;
+}
+
 html body main {
     flex-grow: 1;
     padding: clamp(5px, 3vw, 40px);
@@ -13363,7 +13367,7 @@ html body main .filters-wrapper .separator {
     flex-grow: 1;
 }
 
-html body main .filters-wrapper .filter-actions .bttn-text {
+html body main .filters-wrapper .filter-actions .bttn-text, html body main .filters-wrapper .filter-actions .bttn-outlined {
     margin-right: 2em;
 }
 
@@ -13506,7 +13510,7 @@ html body .tag.required label {
     font-weight: 500;
 }
 
-html body .bttn, html body .bttn-text {
+html body .bttn, html body .bttn-text, html body .bttn-outlined {
     line-height: 2em;
     display: inline-block;
     padding: 0 1em;
@@ -13516,21 +13520,42 @@ html body .bttn, html body .bttn-text {
     transition: background-color .2s;
 }
 
-html body .bttn:hover, html body .bttn-text:hover {
+html body .bttn:hover, html body .bttn-text:hover, html body .bttn-outlined:hover {
     background-color: #e77300;
 }
 
-html body .bttn-text {
+html body .bttn-text, html body .bttn-outlined {
     color: #2F3932;
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-html body .bttn-text:hover {
+html body .bttn-text:hover, html body .bttn-outlined:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
+html body .bttn-outlined {
+    background-color: transparent;
+    box-shadow: 0 0 0 1px #FF8001 inset;
+    color: #FF8001;
+}
+
+html body .bttn-outlined:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+html body .output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+html body .output-header h1 {
+    margin: 0;
+}
+
 html body #output {
-    height: calc(100vh - clamp(10px, 6vw, 80px) - 150px);
+    height: calc(100vh - 275px);
     overflow: auto;
     padding: 20px;
 }
