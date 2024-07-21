@@ -879,7 +879,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"mainScore": [
 										{
 											"year": 2023,
@@ -2355,7 +2355,7 @@
 								"free": {
 									"total": 25,
 									"main": 15,
-									"target": 0,
+									"target": null,
 									"particular": 5,
 									"special": 5,
 									"minScore": [
@@ -3209,7 +3209,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3326,7 +3326,7 @@
 							"price": "147 900",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3369,7 +3369,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3429,7 +3429,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 30
@@ -3516,7 +3516,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3559,7 +3559,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3674,7 +3674,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3717,7 +3717,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3859,7 +3859,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -3975,7 +3975,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4018,7 +4018,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4133,7 +4133,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 20
@@ -4146,7 +4146,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 20
@@ -4197,7 +4197,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4240,7 +4240,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4356,7 +4356,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4399,7 +4399,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4514,7 +4514,7 @@
 							"price": "142 800",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4557,7 +4557,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -4717,7 +4717,7 @@
 							"price": "74 400",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -5193,7 +5193,7 @@
 							"vacations": {
 								"free": {
 									"total": "1",
-									"main": 0,
+									"main": null,
 									"target": 1,
 									"minScore": [
 										{
@@ -5418,7 +5418,7 @@
 							"price": "360 000",
 							"vacations": {
 								"free": {
-									"total": 0,
+									"total": null,
 									"minScore": [
 										{
 											"year": 2023,
@@ -5545,7 +5545,7 @@
 							"price": "63 000",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 20
@@ -5709,7 +5709,7 @@
 							"price": "163 200",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 10
@@ -6025,12 +6025,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Макаренко ",
+					"first_name": "Александр ",
+					"middle_name": "Алексеевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат сельскохозяйственных наук",
+					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
 				"networks": [
 					{
@@ -6059,7 +6059,7 @@
 							"price": "163 200",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6072,12 +6072,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Макаренко ",
+					"first_name": "Александр ",
+					"middle_name": "Алексеевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат сельскохозяйственных наук",
+					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
 				"networks": [
 					{
@@ -6136,12 +6136,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Макаренко ",
+					"first_name": "Александр ",
+					"middle_name": "Алексеевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат сельскохозяйственных наук",
+					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
 				"networks": [
 					{
@@ -6234,12 +6234,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Макаренко ",
+					"first_name": "Александр ",
+					"middle_name": "Алексеевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат сельскохозяйственных наук",
+					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
 				"networks": [
 					{
@@ -6366,12 +6366,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Титученко",
+					"first_name": "Алексей",
+					"middle_name": "Анатольевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат технических наук, доцент",
+					"photo": "tituchenko_aleksey_anatolyevich.jpg"
 				},
 				"networks": [
 					{
@@ -6400,7 +6400,7 @@
 							"price": "163 200",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6413,12 +6413,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Вороков",
+					"first_name": "Виталий",
+					"middle_name": "Хакяшевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "доктор сельскохозяйственных наук, профессор",
+					"photo": "vorokov_vitaliy_hakyashevich.jpg"
 				},
 				"networks": [
 					{
@@ -6477,12 +6477,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Вороков",
+					"first_name": "Виталий",
+					"middle_name": "Хакяшевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "доктор сельскохозяйственных наук, профессор",
+					"photo": "vorokov_vitaliy_hakyashevich.jpg"
 				},
 				"networks": [
 					{
@@ -6515,7 +6515,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 25
@@ -6562,7 +6562,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6575,7 +6575,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 25
@@ -6622,7 +6622,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6635,7 +6635,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6648,17 +6648,17 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Семидоцкий",
+					"first_name": "Виктор",
+					"middle_name": "Александрович",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Доктор экономических наук, доцент",
+					"photo": "semidotzky_viktor_aleksandrovich.jpg"
 				},
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
-						"link": "https://vk.com/kubsau_law"
+						"link": "https://vk.com/public211042602"
 					}
 				]
 			}
@@ -6682,7 +6682,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6695,7 +6695,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6708,12 +6708,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Тюпаков ",
+					"first_name": "Константин ",
+					"middle_name": "Эдуардович",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Доктор экономических наук",
+					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
 				"networks": [
 					{
@@ -6742,7 +6742,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6770,12 +6770,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Тюпаков ",
+					"first_name": "Константин ",
+					"middle_name": "Эдуардович",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Доктор экономических наук",
+					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
 				"networks": [
 					{
@@ -6804,7 +6804,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6817,7 +6817,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6830,12 +6830,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Кудряков ",
+					"first_name": "Владимир ",
+					"middle_name": "Георгиевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат экономических наук, доцент",
+					"photo": "kudryakov_vladimir_georgievich.jpg"
 				},
 				"networks": [
 					{
@@ -6864,7 +6864,7 @@
 							"price": "144 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6877,7 +6877,7 @@
 							"price": "64 500",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 15
@@ -6890,12 +6890,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Тюпаков ",
+					"first_name": "Константин ",
+					"middle_name": "Эдуардович",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Доктор экономических наук",
+					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
 				"networks": [
 					{
@@ -6924,7 +6924,7 @@
 							"price": "147 900",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 12
@@ -6937,12 +6937,12 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Кудряков ",
+					"first_name": "Владимир ",
+					"middle_name": "Георгиевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат экономических наук, доцент",
+					"photo": "kudryakov_vladimir_georgievich.jpg"
 				},
 				"networks": [
 					{
@@ -6990,7 +6990,7 @@
 							"price": "97 200",
 							"vacations": {
 								"free": {
-									"total": 0
+									"total": null
 								},
 								"paid": {
 									"total": 20

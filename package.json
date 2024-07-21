@@ -1,5 +1,5 @@
 {
-  "name": "priemka.local",
+  "name": "priemka-restricted.local",
   "version": "1.0.0",
   "description": "Layout of Kubgau website for local students",
   "main": "index.js",

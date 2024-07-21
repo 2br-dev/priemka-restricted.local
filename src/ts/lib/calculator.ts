@@ -1,252 +1,76 @@
+import { EducationBase, ICardData, IData, IEducationForm, IEducationFreeBase, IEducationLevel, IEducationPaidBase, IFilterParams, IPreparedData, IRequirement, ISection } from './card_interfaces';
 import template from './template';
-import fullcard_tpl from './fullcardtpl';
-import dataTpl from './data_tpl';
-const mustache = require('mustache');
-
-import { 
-	IData, 
-	ICardData, 
-	IEducationLevel, 
-	IEducationForm, 
-	IRequirement, 
-	IPreparedData, 
-	ISection,
-	IURLCardData
- } from "./card_interfaces";
 
 class Calculator{
 
-	outputContainer:HTMLElement;
-	cards_data:IData;
-	selectedCase:ICardData;
-	filterParams = {
-		quickSearch: "",
-		level: "Бакалавриат/специалитет",
-		base: "Бюджетная",
-		form: "Очная",
-		requirements: [],
-		minScore: 0
-	}
+	data:IData;
+	container:HTMLElement;
+	filterParams:IFilterParams;
+	selectedCard:ICardData;
+	filteredData:IData;
+	renderComplete?:()=>void
 
-	constructor(container:HTMLElement | string){
-		if(typeof(container) == "string"){
-			this.outputContainer = <HTMLElement>document.querySelector(container.toString());
+	constructor(container:HTMLElement | string, dataURL:string, renderComplete = () => {}){
+
+		this.renderComplete = renderComplete;
+
+		this.filterParams = {
+			quickSearch: "",
+			level: "Бакалавриат/специалитет",
+			base: EducationBase.FREE,
+			form: "Очная",
+			minScore: null,
+			requirements: []
+		}
+
+		if(typeof(container) === "string"){
+			this.container = <HTMLElement>document.querySelector(container);
 		}else{
-			this.outputContainer = <HTMLElement>container;
-		}
-		this.cards_data = {elements: []};
-	}
-
-	init(){
-		fetch('/lpk-2024-restricted/data/data.json')
-		.then(response => response.json())
-		.then(data => {
-			let filteredData = this.filter(data);
-			this.cards_data = data;
-			this.render(filteredData);
-			
-			// Если в GET параметрах открыты координаты карточки, открываем её
-			if(window.location.search != ""){
-				let URLParamsString = window.location.search.substring(1);
-				let URLParams = new URLSearchParams(URLParamsString);
-				let id = parseInt(URLParams.get("id"));
-				let form = URLParams.get("form");
-				let level = URLParams.get("level");
-	
-				this.openCard(null, {
-					id: id,
-					form: form,
-					level: level
-				})
-			}
-		})
-	
-		$('body').on('change', '[name="level"]', this.filterByLevel.bind(this)); 				// Эвент изменения уровня образования
-		$('body').on('input', '[name="search"]', this.filterByText.bind(this)); 				// Эвент ввода поискового запроса
-		$('body').on('change', '[name="base"]', this.filterByBase.bind(this));					// Фильтр по финансовой основе обучения
-		$('body').on('change', '[name="form"]', this.filterByForm.bind(this));					// Фильтр по форме обучения
-		$('body').on('change', '[name="result[]"]', this.filterByRequirements.bind(this));		// Фильтр по результатам ЕГЭ
-		$('body').on('click', '.education-form', this.switchFormType.bind(this)); 				// Эвент переключения типа образования в карточке
-		$('body').on('click', '#submit', this.runFilters.bind(this)); 							// Запуск фильтрации
-		$('body').on('click', '#reset', this.resetFilters.bind(this)); 							// Сброс фильтрации
-		$('body').on('click', '.faculty-header', this.toggleFaculty.bind(this)); 				// Переключение отображения факультета
-		$('body').on('click', '.spec-card', this.openCard.bind(this));							// Открытие подробных данных о факультете
-		$('body').on('click', '.faculty-modal-close', this.closeCard.bind(this));				// Закрытие модального окна при клике на нём
-		$('body').on('click', '.faculty-modal-wrapper', this.closeOutside.bind(this))			// Закрытие модального окна по клику мимо
-		$('body').on('click', '.form-switcher a', this.switchModalForm.bind(this));				// Переключение формы обучения в модальном окне
-		$('body').on('keyup', this.closeCardEsc.bind(this));									// Закрытие модального окна по Esc
-		
-		$('body').on('click', '[data-remark]', this.openRemark.bind(this));						// Открытие пояснения к стоимости
-		$('body').on('click', '.remark-close-trigger', this.closeRemark.bind(this));			// Закрытие пояснения к стоимости по клику на X
-	}
-
-	/**
-	 * Сбор данных по результатам ЕГЭ
-	 */
-	filterByRequirements(e:JQuery.ChangeEvent){
-		let requirements = [];
-		
-		$('input[name="result[]"]:checked').each(function(){
-			requirements.push($(this).val());
-		});
-
-		this.filterParams.requirements = requirements;
-	}
-
-	/**
-	 * Сбор данных по финансовой основе обучения
-	 */
-	filterByBase(e:JQuery.ChangeEvent){
-		let base = $(e.target).val();
-		this.filterParams.base = base;
-	}
-
-	/**
-	 * Сбор данных по форме обучения
-	 */
-	filterByForm(e:JQuery.ChangeEvent){
-		let form = $(e.target).val();
-		this.filterParams.form = form;
-	}
-
-	/**
-	 * Закрытие ремарки по клику на X
-	 */
-	closeRemark(e:JQuery.ClickEvent){
-		e.preventDefault();
-		let remark  = $(e.currentTarget).parents('.remark-popup');
-		remark.removeClass('open');
-
-		setTimeout(() => {
-			remark.remove();
-		}, 500)
-	}
-
-	/**
-	 * Открытие пояснения к стоимости
-	 */
-	openRemark(e:JQuery.ClickEvent){
-		let remark = e.currentTarget.dataset['remark'];
-
-		// Проверяем наличие уже открытого popup'а
-		if($('.remark-popup').length > 0){
-			return null;
+			this.container = container;
 		}
 
-		if(remark && remark != ""){
-
-			// Формирование DOM
-			let remarkPopup = document.createElement('div');
-			remarkPopup.className = 'remark-popup';
-			let remarkCloseTrigger = document.createElement('a');
-			remarkCloseTrigger.className = 'bx bx-x remark-close-trigger';
-			remarkCloseTrigger.setAttribute('href', 'javascript:void(0)');
-			let remarkContent = document.createElement('div');
-			remarkContent.className = 'remark-content';
-			remarkContent.innerHTML = remark;
-			remarkPopup.append(remarkContent);
-			remarkPopup.append(remarkCloseTrigger);
-			let parent = e.currentTarget.parentElement;
-
-
-			// Открытие
-			parent.append(remarkPopup);
-			setTimeout(() => {
-				remarkPopup.classList.add('open');
+		fetch(dataURL)
+			.then(response => response.json())
+			.then(data => {
+				this.data = data;
+				this.render()
 			})
-		}
+			.catch(err => console.error(err))
 	}
 
-	// Закрытие модального окна по нажатию Escape
-	closeCardEsc(e:JQuery.KeyUpEvent){
-		if(e.key == "Escape"){
-			this.closeCard();
-		}
+	render(){
+		this.filter();
+		let preparedData = this.prepareData(this.filteredData.elements);
+		let mustache = require('mustache');
+
+		let output = mustache.render(template, preparedData);
+
+		this.container.innerHTML = output;
+		
+		this.renderComplete?.();
 	}
 
-	/**
-	 * Переключение формы образования в модальном окне
-	 */
-	switchModalForm(e:JQuery.ClickEvent){
-		e.preventDefault();
-		let el = <HTMLElement>e.currentTarget;
-		let formName = el.textContent;
-
-		let level:IEducationLevel = this.selectedCase.education_levels?.filter((l:IEducationLevel) => {
-			return l.name = this.selectedCase.selectedLevel?.name;
-		})[0];
-
-		if(!level.forms){
-			console.error(level);
-			return null;
-		}
-		let form:IEducationForm = level.forms.filter((f:IEducationForm) => {
-			return f.name == formName;
-		})[0];
-
-		let output = mustache.render(dataTpl, form);
-		this.selectedCase.selectedForm = form;
-
-		$('.form-switcher a').removeClass('selected');
-		$(el).addClass('selected');
-
-		$('.speciality-data-wrapper').html(output);
-	}
-
-	/**
-	 * Закрытие модального окна при клике мимо
-	 */
-	closeOutside(e:JQuery.ClickEvent){
-		let path = Array.from(e.originalEvent?.composedPath());
-		let filteredNodes = path.filter((el:HTMLElement) => {
-			if(el.classList){
-				return el.classList.contains("faculty-modal");
-			}
-		})
-		if(!filteredNodes.length){
-			e.preventDefault();
-			this.closeCard();
+	reset(){
+		this.filterParams = {
+			quickSearch: "",
+			level: "Бакалавриат/специалитет",
+			base: EducationBase.FREE,
+			form: "Очная",
+			minScore: null,
+			requirements: []
 		}
 	}
 
 	/**
-	 * Фильтрация по уровню (Бакалавриат/Специалитет/Магистратура)
+	 * Фильтрация данных
+	 * @returns Данные, попадающие под фильтр IFilterProps
 	 */
-	filterByLevel(e:JQuery.ChangeEvent):void{
-		let input = <HTMLInputElement>e.currentTarget;
-		let tab = input.parentElement;
-		if(tab?.classList.contains('disabled'))
-			return null;
-		$('.calculator-head .pseudo-tab').removeClass('active');
-		tab?.classList.add('active');
-		this.filterParams.level = e.currentTarget.value;
-		let filteredData = this.filter(this.cards_data);
-		this.outputContainer?.setAttribute('data-level', e.currentTarget.value);
-		this.render(filteredData);
-	}
+	filter(){
 
-	/**
-	 * Фильтрация по тексту (быстрый поиск)
-	 */
-	filterByText(e:Event):void{
-		let el = <HTMLInputElement>e.currentTarget;
-		this.filterParams.quickSearch = el.value;
-		const filteredData = this.filter(this.cards_data);
-		this.render(filteredData);
-		if(el.value != ""){
-			$('.section-wrapper').show();
-		}
-	}
-
-	/**
-	 * Применение фильтров к данным
-	 * @param data {IData} Данные
-	 * @returns {IData} Отфильтрованные данные
-	 */
-	filter(data:IData):IData{
-
+		let outputArray = this.data.elements;
+		
 		// Уровень образования
-		let outputArray = data.elements.filter((el:ICardData) => {
+		outputArray = outputArray.filter((el:ICardData) => {
 		
 			if(el.education_levels){
 
@@ -258,24 +82,53 @@ class Calculator{
 					}
 				})[0];
 
+				el.selectedLevel = level;
+
 				return level !== undefined;
 			}
 		})
 
+		// Форма образования
+		outputArray = outputArray.filter((card:ICardData) => {
+			if(card.selectedLevel){
+				let form:IEducationForm = card.selectedLevel.forms.filter((f:IEducationForm) => {
+					return f.name === this.filterParams.form
+				})[0]
+
+				card.selectedForm = form;
+
+				return form !== undefined
+			}
+
+		})
+
+		// Минимальный балл
+		outputArray = outputArray.filter((card:ICardData) => {
+			if(card.selectedForm){
+				let base:IEducationFreeBase | IEducationPaidBase = this.filterParams.base === EducationBase.FREE ? card.selectedForm.vacations.free : card.selectedForm.vacations.paid;
+				card.selectedBase = base;
+				card.selectedBase.name = this.filterParams.base === EducationBase.FREE ? "Бюджет" : "Договор";
+
+				if( this.filterParams.minScore !== null && base.minScore ){
+					return base.minScore[0].score < this.filterParams.minScore
+				}else{
+					return true
+				}
+			}
+		})
 
 		// Быстрый поиск
-		if(this.filterParams.quickSearch != ""){
-			
-			outputArray = outputArray.filter((el:ICardData) => {
+		outputArray = outputArray.filter((el:ICardData) => {
 
-				let needleS = (el.speciality || "").toLowerCase();
-				let needleF = el.faculty.name.toLowerCase();
-				let needleP = (el.profile || "").toLowerCase();
-				let search = this.filterParams.quickSearch.toLowerCase().trim();
+			let needleS = (el.speciality || "").toLowerCase();
+			let needleF = el.faculty.name.toLowerCase();
+			let needleP = (el.profile || "").toLowerCase();
+			let search = this.filterParams.quickSearch.toLowerCase().trim();
 
-				return needleS.indexOf(search) >= 0  || needleF.indexOf(search) >= 0 || needleP.indexOf(search) >= 0 ;
-			})
-		}
+			let retVal = needleS.indexOf(search) >= 0  || needleF.indexOf(search) >= 0 || needleP.indexOf(search) >= 0 ;
+
+			return retVal === true;
+		})
 
 		// Требования
 		if(this.filterParams.level == "Бакалавриат" || this.filterParams.level == 'Специалитет' || this.filterParams.level=="Бакалавриат/специалитет"){
@@ -317,71 +170,22 @@ class Calculator{
 
 		}
 
-		// Минимальный проходной балл
-		if(this.filterParams.minScore > 0){
-			outputArray = outputArray.filter((el:ICardData) => {
-				return el.minScore <= this.filterParams.minScore;
-			})
-		}
-
-		// Сортировка массива перед выдачей
-		(outputArray as any) = this.sort(outputArray);
-
 		let output:IData = {
 			elements: outputArray
 		}
 
-		return output;
+		this.filteredData = output;
 	}
 
 	/**
-	 * Сортировка объектов по параметру
-	 * @param {string} property Параметр, по которому надлежит сортировать
-	 * @returns {Array} Отсортированный массив
+	 * Сортировка секций
 	 */
-	sort(input:Array<ICardData>):Array<ICardData> | null{
-
-		let sortedArray = [...input]; // Копия оригинального массива для изменений
-
-		if(!sortedArray.length) return null;
-
-		sortedArray.sort((a:ICardData, b:ICardData) => {
-
-			// Вывод отладочной информации об ошибочных данных
-			// console.log(a.id + ":" + b.id);
-
-			const nameA = a.faculty.name.toLowerCase();
-			const nameB = b.faculty.name.toLowerCase();
-
-			if(nameA < nameB) return -1;
-			if (nameA > nameB) return 1;
-
+	sortSections(sections: ISection[]):void{
+		sections.sort((a, b) => {
+			if (a.name < b.name) return -1;
+			if (a.name > b.name) return 1;
 			return 0;
 		})
-
-		// Создание заголовка факультета для первого элемента
-		let firstElementFaculty = sortedArray[0].faculty;
-		let newElement:ICardData = {
-			faculty: firstElementFaculty
-		};
-
-		sortedArray.unshift(newElement); // Добавляем заголовок в начало списка
-
-		for(let i=1; i<sortedArray.length-1;i++){
-			let nextCardData =  sortedArray[i+1];
-			let currentCardData = sortedArray[i];
-
-			if(nextCardData.faculty != currentCardData.faculty){
-						
-				let newElement:ICardData = {
-					faculty: nextCardData.faculty
-				}
-		
-				sortedArray = this.InsertArray(sortedArray, (i+1), newElement);
-			}
-		}
-
-		return sortedArray;
 	}
 
 	/**
@@ -401,448 +205,47 @@ class Calculator{
 	}
 
 	/**
-	 * Вывод данных с помощью Template-машины
-	 * @param {IData} data Данные для генерации
+	 * Группировка данных перед передачей в шаблонизатор
+	 * @returns Сгруппированные данные IPreparedData
 	 */
-	render(data:IData):void{
-		
-		let preparedData:IPreparedData = this.groupData(data);
-		let output = mustache.render(template, preparedData);
-		let educationForm = this.filterParams.level;
+	prepareData(elements:ICardData[]):IPreparedData{
 
-		this.outputContainer.innerHTML = output;
+		if(!elements) return { sections: [] }
 
-		document.querySelectorAll('.faculty-header').forEach((headerEl:Element) => {
-			let header = <HTMLElement>headerEl;
-			if(header.nextElementSibling?.className == 'faculty-header') header.remove();
-		})
-
-		document.querySelectorAll('.spec-card').forEach((cardEl:Element) => {
-
-			let card = <HTMLElement>cardEl;
-			if(!card) return;
-			
-			// Обновление кодов в карточке
-			let id = parseInt(card.dataset['id'] || "0");
-
-			if(id == 0) return;
-
-			let cardData = this.cards_data.elements.filter((c:ICardData) => {
-				return c.id == id
-			})[0];
-			if(cardData){
-
-				let selectedLevel = document.querySelector(".calculator-head .active")?.textContent?.trim();
-	
-				let level = cardData.education_levels?.filter((l:IEducationLevel) => {
-					if(selectedLevel == "Бакалавриат/специалитет"){
-						return l.name == "Бакалавриат" || l.name == "Специалитет";
-					}else{
-						return l.name == selectedLevel
-					}
-				})[0];
-	
-				if(!level) return;
-				let code = level.code;
-				let freeVacations = level.forms[0].vacations.free.total;
-				let paidVacations = level.forms[0].vacations.paid.total;
-	
-				let cardCode = card.querySelector('.code');
-				if(cardCode) cardCode.textContent = code;
-	
-				document.querySelectorAll('.education-level').forEach((levelEl:Element) => {
-	
-					let level = <HTMLElement>levelEl;
-	
-					level.querySelectorAll('.education-form').forEach((formEl:Element) => {
-	
-						let form = <HTMLFormElement>formEl;
-						form.classList.remove('active');
-					});
-					level.querySelector('.education-form:first-of-type')?.classList.add('active');
-				})
-	
-				// Обновление данных по количеству мест
-				let freeValue = card.querySelector('.number-free .number-value');
-				let paidValue = card.querySelector('.number-paid .number-value');
-	
-				if(freeValue && paidValue){
-					freeValue.textContent = freeVacations.toString();
-					paidValue.textContent = paidVacations.toString();
-				}
-			}
-		})
-	}
-
-	/**
-	 * Запуск фильтрации
-	 */
-	runFilters(e:Event, fast:boolean = false):void{
-
-		// Сбор данных для фильтрации
-		if(this.filterParams.requirements.length > 0 && this.filterParams.requirements.length < 3){
-			alert("Пожалуйста, выберите не менее 3-х предметов!");
-			return;
-		}
-
-		let filteredData = this.filter(this.cards_data);
-		this.render(filteredData);
-
-		if(!fast){
-			$('.section-wrapper').slideDown();
-			$('.faculty-header').addClass('active');
-		}
-	}
-
-	/**
-	 * Переключение типа образования в карточке
-	 */
-	switchFormType(e:JQuery.ClickEvent):void{
-
-		let card = $(e.currentTarget).parents('.spec-card').get(0);
-		if(!card) return;
-		let id = parseInt(card?.dataset['id'] || "0");
-		let selectedForm = e.currentTarget.textContent;
-
-		card?.querySelectorAll('.education-form').forEach((formEl:Element) => {
-			let form = <HTMLElement>formEl;
-			form.classList.remove("active");
-		})
-
-		e.currentTarget.classList.add('active');
-		
-		let entry = this.cards_data.elements.filter((el:ICardData) => {
-			return el.id == id
-		})[0];
-
-		if(!entry) return;
-
-		// Получаем уровень
-		let level:IEducationLevel | null = null;
-		if(entry.education_levels){
-			level = entry.education_levels.filter((level:IEducationLevel) => {
-				if(this.filterParams.level == "Бакалавриат/специалитет"){
-					return level.name == "Бакалавриат" || level.name == "Специалитет";
-				}else{
-					return level.name == this.filterParams.level;
-				}
-			})[0];
-		}
-
-		if(!level) return;
-
-		// Получаем форму обучения
-		let form:IEducationForm = level.forms.filter((f:IEducationForm) => {
-			return f.name == selectedForm;
-		})[0];
-
-		let numberFree = card.querySelector('.number-free .number-value');
-		let numberPaid = card.querySelector('.number-paid .number-value');
-		let duration = card.querySelector('.number-duration .number-value');
-		let price = card.querySelector('.number-cost .number-value');
-
-		if(!numberFree || !numberPaid || !duration) return;
-
-		numberFree.textContent = form.vacations.free.total.toString();
-		numberPaid.textContent = form.vacations.paid.total.toString();
-		duration.textContent = form.duration.toString();
-
-		if(!form.remark){
-			price.textContent = form.price.toString() + " ₽/год";
-		}else{
-			let priceLink = document.createElement('a');
-			priceLink.href = 'javascript:void(0)';
-			priceLink.textContent = form.price.toString() + " ₽/год";
-			
-			let pricelinkInfoIcon = document.createElement('i');
-			pricelinkInfoIcon.classList.add('bx', 'bxs-info-circle');
-			priceLink.append(pricelinkInfoIcon);
-			
-			priceLink.dataset['remark'] = form.remark;
-			price.innerHTML = "";
-			price?.append(priceLink);
-		}
-		
-	}
-
-	/**
-	 * Сброс фильтров
-	 */
-	resetFilters(){
-		this.filterParams.requirements = [];
-		this.filterParams.quickSearch="";
-		let filtersForm = <HTMLFormElement>document.querySelector('#filters');
-		$('[name="search"]').val('');
-		filtersForm.reset();
-		this.runFilters(null, true);
-		$('#output').scrollTop(0);
-	}
-
-	/**
-	 * Переключение отображения факультета
-	 */
-	toggleFaculty(e:JQuery.ClickEvent){
-		let fheader = $(e.currentTarget);
-		let sectionCards = fheader.next();
-
-		let already = sectionCards.is(':visible');
-		let classname = already ? "faculty-header" : "faculty-header active";
-		fheader[0].className = classname;
-
-		sectionCards.slideToggle({
-			duration: 'fast'
-		});
-	}
-
-	/**
-	 * Подготовка данных к передаче шаблонизатору
-	 * @param {IData} data Данные для упорядочивания
-	 * @returns {IPreparedData} Подготовленные данные
-	 */
-	groupData(data:IData):IPreparedData{
-
-		let elements:ICardData[] = data.elements;
-
-		if(!elements) return {
-			sections: []
+		let preparedData = { 
+			sections:new Array<ISection>()
 		};
 
-		let sections = elements.filter((el:ICardData) => {
-			return el.id == null;
-		});
+		elements.forEach((card:ICardData) => {
 
-		let sectionIndex = 0;
-		let preparedData:IPreparedData = {
-			sections: []
-		};
-		
-		let section:ISection = {
-			name: "",
-			sectionContent: []
-		};
+			card.necessary = card.requirements?.filter((r:IRequirement) => r.classname == 'required');
+			card.optional = card.requirements?.filter((r:IRequirement) => r.classname == 'optional');
 
-		data.elements.forEach((card:ICardData) => {
+			let sectionNeedle = preparedData.sections.filter((s:ISection) => {
+				return s.name == card.faculty.name;
+			})
 
-			let formName = this.filterParams.level == "Бакалавриат/специалитет" ?  card.education_levels?.filter((l:IEducationLevel) => {
-				return l.name == "Бакалавриат" || l.name == "Специалитет";
-			})[0].name : this.filterParams.level;
+			let section:ISection;
 
-			let selectedLevel:IEducationLevel = card.education_levels?.filter((l:IEducationLevel) => {
-				return l.name === formName;
-			})[0];
-
-			card.selectedLevel = selectedLevel;
-
-			if(card.selectedLevel){
-				let form:IEducationForm = selectedLevel.forms.filter((f:IEducationForm) => {
-					return f.name === this.filterParams.form;
-				})[0];
-
-				card.selectedForm = form;
-
-				if(form){
-					if(this.filterParams.base == "Бюджетная"){
-						card.selectedBase = form.vacations.free
-						card.selectedBase.name = "бюджет"
-					}else{
-						card.selectedBase = form.vacations.paid
-						card.selectedBase.name = "договор"
-					}
+			if(sectionNeedle.length === 0){
+				section = {
+					name: card.faculty.name,
+					sectionContent: [card],
+					count: 1
 				}
-			}
-
-			if(card.id == null){
-				if(section.name == ""){
-					section = {
-						name: card.faculty.name,
-						sectionContent: []
-					}
-				}else{
-					if(section.name != card.faculty.name){
-						preparedData.sections.push(section);
-						section = {
-							name: card.faculty.name,
-							sectionContent: []
-						}
-					}
-				}
+				preparedData.sections.push(section);
 			}else{
-				let necessary = card.requirements?.filter((r:IRequirement) => {
-					return r.classname == "required";
-				})
-				let optional = card.requirements?.filter((r:IRequirement) => {
-					return r.classname == "optional";
-				})
-				card.necessary = necessary;
-				card.optional = optional;
+				section = sectionNeedle[0];
 				section.sectionContent.push(card);
+				section.count++;
 			}
-		});
+		})
 
-		// if(preparedData.sections.length == 0 && section.sectionContent.length > 0){
-			preparedData.sections.push(section);
-		// }
+		this.sortSections(preparedData.sections);
+
+		if(preparedData.sections.length === 1 && preparedData.sections[0].name === "") preparedData = {sections: []};
 
 		return preparedData;
-
-	}
-
-	/**
-	 * Открытие карточки с описанием факультета
-	 */
-	openCard(e:JQuery.ClickEvent, URLParams:IURLCardData = null){
-
-		// let selectedCase:ICardData;
-		let card:HTMLElement;
-		
-		if(!URLParams){
-			
-			card = e.currentTarget;
-			e.preventDefault();
-		
-			// Прерываем выполнение если клик происходит по интерактивному элементу внутри карточки
-			let path = Array.from(e.originalEvent?.composedPath());
-			let links = path.filter((el:HTMLElement) => {
-				if(el.classList){
-					return el.classList.contains('remark-popup') || el.tagName == 'A';
-				}else{
-					return el.tagName == "A";
-				}
-			});
-		
-			if(links.length) return;
-
-			// Закрываем remark-popup если он был открыт
-			let remarkPopup = <HTMLElement>card.querySelector('.remark-popup');
-			if(remarkPopup){
-				remarkPopup.classList.remove('open');
-				setTimeout(() => {
-					remarkPopup.remove();
-				}, 500);
-			}
-		
-			// Если клик по карточке не происходит по интерактивным элементам, продолжаем…
-			let id = parseInt(card.dataset['id']);
-		
-			this.selectedCase = this.cards_data.elements.filter((card:ICardData) => {
-				return card.id == id;
-			})[0];
-
-			// Если у карточки присутствует поле внешней ссылки, вместо открытия модалки открываем её
-		
-			// let externalLink = this.selectedCase.externalLink;
-			// if(externalLink != null && externalLink != ""){
-			// 	// Открываем окно и прерываем выполнение
-			// 	window.open(externalLink, "_blank");
-			// 	return null;
-			// }
-
-		}else{
-			this.selectedCase = this.cards_data.elements.filter((card:ICardData) => {
-				return card.id == URLParams.id;
-			})[0];
-
-			// Прокручиваем до секции карточек и открываем её
-			history.scrollRestoration = 'manual';
-			let faculty = this.selectedCase.faculty.name;
-
-			let element = $(`[data-faculty='${faculty}']`);
-			let top = element.offset().top;
-			let content = element.next();
-			content.show();
-			document.documentElement.scrollTop = top;
-		}
-
-		// Выбранный уровень образования
-		if(!URLParams){
-			this.selectedCase.selectedLevel = this.selectedCase.education_levels.filter((l:IEducationLevel) => {
-				if(this.filterParams.level == "Бакалавриат/специалитет"){
-					return l.name == "Бакалавриат" || l.name == "Специалитет"
-				}else{
-					return l.name === this.filterParams.level;
-				}
-			})[0];
-		}else{
-			this.selectedCase.selectedLevel = this.selectedCase.education_levels?.filter((l:IEducationLevel) => {
-				return l.name == URLParams.level;
-			})[0];
-		}
-
-		// Выбранная форма обучения
-		if(!URLParams){
-			let formEl = <HTMLElement>card.querySelector('.education-form.active');
-			let formText = formEl.textContent;
-			this.selectedCase.selectedForm = this.selectedCase.selectedLevel.forms.filter((f:IEducationForm) => {
-				return f.name == formText;
-			})[0];
-		}else{
-			this.selectedCase.selectedForm = this.selectedCase.selectedLevel?.forms.filter((f:IEducationForm) => {
-				return f.name == URLParams.form
-			})[0];
-		}
-
-		// Формирование данных для переключателя
-		this.selectedCase.switcher = [];
-		this.selectedCase.selectedLevel.forms.forEach((f:IEducationForm) => {
-			let className = f.name == this.selectedCase.selectedForm.name ? "selected" : "";
-			this.selectedCase.switcher?.push({
-				name: f.name,
-				classname: className
-			});
-		})
-
-		let dom = mustache.render(fullcard_tpl, this.selectedCase);
-
-		$('body').append(dom);
-
-		setTimeout(() => {
-			$('.faculty-modal-wrapper').addClass('open');
-		}, 200);
-	}
-
-	/**
-	 * Закрытие каоточки с описанием факультета
-	 */
-	closeCard(){
-		$('.faculty-modal-wrapper:last-of-type').removeClass('open');
-		let video = <HTMLVideoElement>document.querySelector('#video-modal video');
-		video?.pause();
-		setTimeout(() => {
-			$('.faculty-modal-wrapper:last-of-type').remove();
-		}, 600);
-	}
-
-	/**
-	 * Формирование ссылки на модальное окно
-	 */
-	async shareModal(){
-		let search_params = new URLSearchParams();
-		search_params.set("id", this.selectedCase.id?.toString())
-		search_params.set("level", this.selectedCase.selectedLevel?.name);
-		search_params.set("form", this.selectedCase.selectedForm.name);
-		
-		let url = window.location.origin + "?" + search_params.toString();
-
-		if(navigator.clipboard && window.isSecureContext){
-			await navigator.clipboard.writeText(url).then(() => {
-				navigator.clipboard.writeText(url);
-				M.toast({html: "Ссылка скопирована в буфер обмена!"});
-			})
-		}else{
-			let input = document.createElement('input');
-			try{
-				input.value = url;
-				document.documentElement.append(input);
-				input.select();
-				document.execCommand('copy');
-			}catch{
-				M.toast({html: "Настройки браузера не позволяют скопировать текст в буфер обмена!"});
-			}finally{
-				input.remove();
-				M.toast({html: "Ссылка скопирована в буфер обмена!"});
-			}
-
-		}
 	}
 }
 

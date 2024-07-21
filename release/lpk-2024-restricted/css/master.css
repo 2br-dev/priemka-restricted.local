@@ -3375,6 +3375,39 @@ td, th {
     }
 }
 
+.material-tooltip {
+    padding: 10px 8px;
+    font-size: 1rem;
+    z-index: 2000;
+    background-color: transparent;
+    border-radius: 2px;
+    color: #fff;
+    min-height: 36px;
+    line-height: 120%;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    max-width: calc(100% - 4px);
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    visibility: hidden;
+    background-color: #323232;
+}
+
+.backdrop {
+    position: absolute;
+    opacity: 0;
+    height: 7px;
+    width: 14px;
+    border-radius: 0 0 50% 50%;
+    background-color: #323232;
+    z-index: -1;
+    transform-origin: 50% 0%;
+    visibility: hidden;
+}
+
 /*!
  * Waves v0.6.0
  * http://fian.my.id/Waves
@@ -12804,8 +12837,8 @@ body h1 {
 }
 
 body h2 {
-    font-size: clamp(20px, 3vw, 40px);
-    line-height: 1.4em;
+    font-size: clamp(20px, 2.5vw, 40px);
+    line-height: 1.2em;
 }
 
 body h3 {
@@ -12848,6 +12881,12 @@ body .large {
     grid-template-columns: repeat(2, 1fr);
 }
 
+@media (max-width: 1600px) {
+    #output .section-wrapper .section-content {
+        grid-template-columns: 1fr;
+    }
+}
+
 #output .faculty-header {
     width: 100%;
     margin: 0;
@@ -12856,6 +12895,9 @@ body .large {
     display: flex;
     align-items: center;
     position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 #output .faculty-header:hover {
@@ -12896,8 +12938,21 @@ body .large {
     border-bottom: 1px solid #1FAD96;
 }
 
-#output .faculty-header h4 {
+#output .faculty-header h2 {
     margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#output .faculty-header h2 span {
+    border: 1px solid #ccc;
+    font-size: clamp(16px, 3vw, 18px);
+    line-height: 1.4em;
+    padding: 0 10px;
+    background-color: #c0c0c0;
+    border-radius: 4px;
 }
 
 #output .section-wrapper {
@@ -12909,6 +12964,8 @@ body .large {
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
+    cursor: pointer;
+    width: 100%;
 }
 
 #output .spec-card .card-header {
@@ -12919,6 +12976,14 @@ body .large {
 #output .spec-card .card-header .speciality {
     flex-grow: 1;
     padding-right: 20px;
+}
+
+#output .spec-card .card-header .speciality h3 {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 #output .spec-card .card-header .speciality h3, #output .spec-card .card-header .speciality p {
@@ -13057,7 +13122,175 @@ body .large {
     justify-content: center;
 }
 
-header {
+.filter-block .disabled {
+    opacity: .3;
+    pointer-events: none;
+}
+
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity .4s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.modal-wrapper .modal {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px -20px rgba(0, 0, 0, 0.4);
+    transition: transform .4s;
+    transform: translateY(2vmax);
+    width: 1200px;
+}
+
+.modal-wrapper .modal .modal-header {
+    display: flex;
+    padding: 30px;
+}
+
+.modal-wrapper .modal .modal-header .title-wrapper {
+    flex-grow: 1;
+    margin-left: -30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    border-left: 6px solid #1FAD96;
+    padding-right: 40px;
+}
+
+.modal-wrapper .modal .modal-header h3 {
+    font-size: clamp(22px, 3vw, 26px);
+    color: #1FAD96;
+    line-height: 1.2em;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.modal-wrapper .modal .modal-header p {
+    margin: 0;
+}
+
+.modal-wrapper .modal .modal-header .form-switch {
+    padding: 10px 0;
+}
+
+.modal-wrapper .modal .modal-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 30px;
+}
+
+.modal-wrapper .modal .modal-content .numbers h4 {
+    font-size: clamp(22px, 3vw, 26px);
+    margin: 0;
+}
+
+.modal-wrapper .modal .modal-content .numbers#results {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+}
+
+.modal-wrapper .modal .modal-content .numbers#contacts {
+    grid-column: 1 / 3;
+}
+
+.modal-wrapper .modal .modal-content .numbers#contacts .value {
+    text-align: left;
+}
+
+.modal-wrapper .modal .modal-content .numbers table tr {
+    border: 0;
+}
+
+.modal-wrapper .modal .modal-content .numbers table tr:nth-child(odd) td {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modal-wrapper .modal .modal-content .numbers table tr th {
+    padding-bottom: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-wrapper .modal .modal-content .numbers table tr td {
+    padding: 10px;
+}
+
+.modal-wrapper .modal .modal-content .numbers table tr td.key {
+    font-size: 14px;
+}
+
+.modal-wrapper .modal .modal-content .numbers table tr td.value {
+    font-weight: bold;
+    font-size: clamp(16px, 3vw, 18px);
+    text-align: right;
+}
+
+.modal-wrapper .modal .note {
+    padding: 0 30px;
+}
+
+.modal-wrapper .modal .note p {
+    margin: 0;
+    padding: 20px;
+    background-color: #eff1d9;
+    border-radius: 12px;
+    margin-top: 40px;
+}
+
+.modal-wrapper .modal .modal-footer {
+    padding: 30px;
+    text-align: right;
+}
+
+.modal-wrapper.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-wrapper.open .modal {
+    transform: none;
+}
+
+.modal-wrapper[data-level="Магистратура"] .modal {
+    width: 800px;
+}
+
+.modal-wrapper[data-level="Магистратура"] .modal .modal-content {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.modal-wrapper[data-level="Магистратура"] .modal .modal-content .numbers#results {
+    display: none;
+}
+
+.modal-wrapper[data-level="Магистратура"] .modal .modal-content .numbers#free {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.modal-wrapper[data-level="Магистратура"] .modal .modal-content .numbers#paid {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.modal-wrapper[data-level="Магистратура"] .modal .modal-content .numbers#contacts {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}
+
+header form {
     display: flex;
     justify-content: space-between;
     background-color: #1FAD96;
@@ -13065,7 +13298,7 @@ header {
     padding: 15px 30px;
 }
 
-header input {
+header form input {
     line-height: 1.6em;
     padding: .1em .8em;
     border-radius: 30px;
@@ -13076,18 +13309,23 @@ header input {
     transition: background-color .2s, color .2s;
 }
 
-header input::-moz-placeholder {
+header form input::-moz-placeholder {
     color: rgba(255, 255, 255, 0.2);
 }
 
-header input::placeholder {
+header form input::placeholder {
     color: rgba(255, 255, 255, 0.2);
 }
 
-header input:focus {
+header form input:focus {
     outline: none;
     background-color: #fff;
     color: #000;
+}
+
+html .material-tooltip {
+    max-width: 600px;
+    text-align: left;
 }
 
 html .no-margin {

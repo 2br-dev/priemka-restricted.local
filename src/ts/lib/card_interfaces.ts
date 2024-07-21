@@ -1,17 +1,38 @@
+export enum EducationBase{
+	FREE = 'free',
+	PAID = 'paid'
+}
+
+export interface IFilterParams{
+	quickSearch:string,
+	level:string,
+	base: EducationBase
+	form: string,
+	requirements: string[],
+	minScore:number | null
+}
+
+export interface IMinScore{
+	year: number,
+	score: number
+}
+
 export interface IEducationFreeBase{
 	name: string,
 	total: number,
 	main?: number,
 	target?: number,
 	particular?: number,
-	special?: number
+	special?: number,
+	minScore: IMinScore[]
 }
 
 export interface IEducationPaidBase{
 	name: string,
 	total: number,
 	main?: number,
-	foreign?: number
+	foreign?: number,
+	minScore: IMinScore[]
 }
 
 export interface IEducationForm{
@@ -64,7 +85,20 @@ export interface ICardData{
 	selectedBase?:IEducationFreeBase | IEducationPaidBase,
 	switcher?: IFormSwitcher[],
 	externalLink?: string,
-	minScore?: number
+	extra?: {
+		head: {
+			last_name: string,
+			first_name: string,
+			middle_name: string,
+			rank: string,
+			regalia: string,
+			phone: string
+		},
+		networks: {
+			icon: string,
+			link: string
+		}
+	}
 }
 
 export interface IData{
@@ -74,6 +108,7 @@ export interface IData{
 export interface ISection{
 	name: string,
 	sectionContent: ICardData[];
+	count: number
 }
 
 export interface IPreparedData{
