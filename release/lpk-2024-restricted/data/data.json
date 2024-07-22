@@ -210,16 +210,16 @@
 									"special": 2,
 									"minScore": [
 										{
-											"year": 2021,
-											"score": 150
+											"year": 2023,
+											"score": 155
 										},
 										{
 											"year": 2022,
 											"score": 155
 										},
 										{
-											"year": 2023,
-											"score": 155
+											"year": 2021,
+											"score": 150
 										}
 									]
 								},
@@ -227,7 +227,7 @@
 									"total": 28,
 									"minScore": [
 										{
-											"year": 2021,
+											"year": 2023,
 											"score": 99
 										},
 										{
@@ -235,7 +235,7 @@
 											"score": 99
 										},
 										{
-											"year": 2023,
+											"year": 2021,
 											"score": 104
 										}
 									]
@@ -341,7 +341,7 @@
 									"special": 5,
 									"minScore": [
 										{
-											"year": 2021,
+											"year": 2023,
 											"score": 186
 										},
 										{
@@ -349,7 +349,7 @@
 											"score": 160
 										},
 										{
-											"year": 2023,
+											"year": 2021,
 											"score": 172
 										}
 									]
@@ -360,7 +360,7 @@
 									"foreign": 2,
 									"minScore": [
 										{
-											"year": 2021,
+											"year": 2023,
 											"score": 146
 										},
 										{
@@ -761,7 +761,7 @@
 											"score": 195
 										},
 										{
-											"year": 2022,
+											"year": 2021,
 											"score": 228
 										}
 									]

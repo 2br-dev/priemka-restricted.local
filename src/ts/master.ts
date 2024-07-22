@@ -53,12 +53,13 @@ function buildCharts() {
 			scoresString = scoresString?.substring(0, scoresString.length - 1)
 		}
 
-		let years = [];
+		let years = ["2021", "2022", "2023"];
 		let scores = [];
 
 		// Преобразуем в массивы
-		if(yearsString !== "") years = yearsString?.split(",").reverse();
 		if(scoresString !== "")scores = scoresString?.split(",").reverse();
+
+		if(scores.length == 0) scores = [0,0,0]
 		
 		// Если массивы не пусты, генерируем графики
 		if(scores.length > 1 && years.length > 1){
