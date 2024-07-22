@@ -8,7 +8,7 @@ let template = `
 	<div class="section-content">
 	{{#sectionContent}}
 	<div class="spec-card-wrapper">
-		<div class="spec-card waves-effect hoverable z-depth-1" data-id="{{id}}" data-faculty="{{faculty.name}}" data-no-data="{{noDetails}}" >
+		<div class="spec-card waves-effect hoverable z-depth-1" data-id="{{id}}" data-faculty="{{faculty.name}}" >
 			<div class="card-header">
 				<div class="speciality">
 					<h3 class="tooltipped" data-tooltip="{{speciality}}" data-position="top">{{speciality}}</h3>
@@ -23,7 +23,7 @@ let template = `
 				{{^selectedBase.minScore.0.score}}
 				<div class="min-score">
 					<i>Мин. балл '23</i>
-					<span>Н/Д</span>
+					<span class="tooltipped" data-tooltip="Нет данных" data-position="top">Н/Д</span>
 				</div>
 				{{/selectedBase.minScore.0.score}}
 			</div>
@@ -85,6 +85,9 @@ let template = `
 				{{.}}
 				</div>
 			{{/note}}
+			<div class="graph-wrapper" data-years="{{#selectedBase.minScore}}{{year}},{{/selectedBase.minScore}}" data-scores="{{#selectedBase.minScore}}{{score}},{{/selectedBase.minScore}}">
+
+			</div>
 		</div>
 	</div>
 	{{/sectionContent}}

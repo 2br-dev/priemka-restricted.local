@@ -2,6 +2,7 @@ import Calculator from "./lib/calculator";
 import { EducationBase, ICardData, IData } from "./lib/card_interfaces";
 import * as M from 'materialize-css';
 import CardModal from "./lib/card_modal";
+import * as Charts from 'echarts';
 
 let calculator:Calculator;
 
@@ -11,6 +12,8 @@ let rowsVisible:boolean = false;
 $(() => {
 	calculator = new Calculator('#output', '/lpk-2024-restricted/data/data.json', () => {
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'));
+		buildCharts();
+		$('.section-wrapper').hide();
 	});
 
 	$('body').on('input', '[name="search"]', quickSearch); 			// Быстрый поиск
@@ -33,6 +36,101 @@ $(() => {
 	$('body').on('click', '.spec-card', openModal);
 
 });
+
+// Построение графиков
+function buildCharts() {
+	
+	document.querySelectorAll('.graph-wrapper').forEach((element:Element) => {
+		
+		// Читаем данные из атрибутов
+		let el = element as HTMLDivElement;
+		let yearsString = el.dataset.years;
+		if(yearsString.length > 1){
+			yearsString = yearsString?.substring(0, yearsString.length - 1)
+		}
+		let scoresString = el.dataset.scores;
+		if(scoresString.length > 1){
+			scoresString = scoresString?.substring(0, scoresString.length - 1)
+		}
+
+		let years = [];
+		let scores = [];
+
+		// Преобразуем в массивы
+		if(yearsString !== "") years = yearsString?.split(",").reverse();
+		if(scoresString !== "")scores = scoresString?.split(",").reverse();
+		
+		// Если массивы не пусты, генерируем графики
+		if(scores.length > 1 && years.length > 1){
+			let chart = Charts.init(el);
+
+			let options = {
+				title: {
+					text: 'Минимальный проходной балл в динамике',
+					left: 16,
+					textStyle: {
+						fontWeight: 400,
+						fontSize: 16
+					}
+				},
+				grid: {
+					left: '50px',
+					right: '40px',
+					top: '40px',
+					bottom: '40px'
+				},
+				tooltip: {
+					trigger: 'item'
+				},
+				xAxis: {
+				  type: 'category',
+				  boundaryGap: false,
+				  data: years,
+				  splitLine: {
+					show: false
+				  },
+				},
+				yAxis: {
+				  type: 'value',
+				  splitLine: {
+					show: false
+				  },
+				  
+				},
+				series: [
+				  {
+					data: scores,
+					type: 'line',
+					smooth: true,
+					lineStyle: {
+					  width: 2,
+					  color: '#1FAD96'
+					},
+					symbol: 'circle',
+					symbolSize: 10,
+					itemStyle: {
+					  color: '#1FAD96'
+					},
+					areaStyle: {
+					  color: new Charts.graphic.LinearGradient(0, 0, 0, 1, [
+						{
+						  offset: 0,
+						  color: 'rgba(31,173,150,0.2)'
+						},
+						{
+						  offset: 1,
+						  color: 'rgba(31,173,50,0)'
+						}
+					  ])
+					},
+				  }
+				]
+			}
+
+			options && chart.setOption(options)
+		}
+	})
+}
 
 // Промотка наверх
 function scrollTop() {
@@ -158,8 +256,8 @@ function toggleFaculty(e:JQuery.ClickEvent){
 		duration: 'fast'
 	});
 
-	// Если все строки развёрнуты вручную
-	if($('.faculty-header.active').length === $('.faculty-header').length){
+	// Если хоть одна строка развёрнута
+	if($('.faculty-header.active').length > 0){
 		rowsVisible = true;
 		$('#toggle-rows').text('Свернуть все');
 	}
@@ -193,6 +291,7 @@ function reset(){
 	calculator.reset();
 	(document.querySelector('#filters') as HTMLFormElement).reset();
 	(document.querySelector('#top-form') as HTMLFormElement).reset();
+	$('.tag, .input-field').removeClass('disabled');
 	$('#output').scrollTop(0);
 	$('#toggle-rows').text('Развернуть все');
 	rowsVisible = false;

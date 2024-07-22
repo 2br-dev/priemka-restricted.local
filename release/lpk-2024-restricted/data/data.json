@@ -50,7 +50,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 151
+											"score": 148
 										},
 										{
 											"year": 2022,
@@ -58,7 +58,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 148
+											"score": 151
 										}
 									]
 								}
@@ -119,6 +119,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -222,7 +228,7 @@
 									"minScore": [
 										{
 											"year": 2021,
-											"score": 104
+											"score": 99
 										},
 										{
 											"year": 2022,
@@ -230,7 +236,7 @@
 										},
 										{
 											"year": 2023,
-											"score": 99
+											"score": 104
 										}
 									]
 								}
@@ -291,6 +297,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -330,7 +342,7 @@
 									"minScore": [
 										{
 											"year": 2021,
-											"score": 172
+											"score": 186
 										},
 										{
 											"year": 2022,
@@ -338,7 +350,7 @@
 										},
 										{
 											"year": 2023,
-											"score": 186
+											"score": 172
 										}
 									]
 								},
@@ -349,7 +361,7 @@
 									"minScore": [
 										{
 											"year": 2021,
-											"score": 157
+											"score": 146
 										},
 										{
 											"year": 2022,
@@ -357,7 +369,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 146
+											"score": 157
 										}
 									]
 								}
@@ -433,6 +445,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -559,6 +577,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "lebedovsky_ivan_anatolyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-43",
+						"link": "tel:+78612215843"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -685,6 +709,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "lebedovsky_ivan_anatolyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-43",
+						"link": "tel:+78612215843"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -801,6 +831,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "sery_dmitry_gavriilovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-15",
+						"link": "tel:+78612215915"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -891,7 +927,7 @@
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -937,16 +973,22 @@
 			],
 			"extra": {
 				"head": {
-					"last_name": "Серый",
-					"first_name": "Дмитрий",
+					"last_name": "Серый ",
+					"first_name": "Дмитрий ",
 					"middle_name": "Гавриилович",
 					"rank": "Декан факультета",
 					"regalia": "Кандидат технических наук",
 					"photo": "sery_dmitry_gavriilovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-15",
+						"link": "tel:+78612215915"
+					}
+				],
 				"networks": [
 					{
-						"icon": "bx bxl-telegram",
+						"icon": "bx bxl-vk",
 						"link": "https://vk.com/stroyfak_kubsau"
 					}
 				]
@@ -1060,9 +1102,15 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "sery_dmitry_gavriilovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-15",
+						"link": "tel:+78612215915"
+					}
+				],
 				"networks": [
 					{
-						"icon": "bx bxl-telegram",
+						"icon": "bx bxl-vk",
 						"link": "https://vk.com/stroyfak_kubsau"
 					}
 				]
@@ -1221,6 +1269,12 @@
 					"regalia": "Кандидат ветеринарных наук",
 					"photo": "shevchenko_alexander_nikolaevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-20",
+						"link": "tel:+78612215820"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -1337,6 +1391,12 @@
 					"regalia": "Кандидат ветеринарных наук",
 					"photo": "shevchenko_alexander_nikolaevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-20",
+						"link": "tel:+78612215820"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -1387,6 +1447,12 @@
 					"regalia": "Кандидат ветеринарных наук",
 					"photo": "shevchenko_alexander_nikolaevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-20",
+						"link": "tel:+78612215820"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -1546,6 +1612,12 @@
 					"regalia": "доктор технических наук, доцент",
 					"photo": "bandurin_mihail_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-60",
+						"link": "tel:+78612215860"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -1712,6 +1784,12 @@
 					"regalia": "доктор технических наук, доцент",
 					"photo": "bandurin_mihail_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-60",
+						"link": "tel:+78612215860"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -1755,11 +1833,11 @@
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -1774,11 +1852,11 @@
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								}
@@ -1833,6 +1911,12 @@
 					"regalia": "доктор технических наук, доцент",
 					"photo": "bandurin_mihail_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-60",
+						"link": "tel:+78612215860"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2000,6 +2084,12 @@
 					"regalia": "кандидат технических наук",
 					"photo": "belokur_kirill_alekseevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-44",
+						"link": "tel:+78612215944"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2161,6 +2251,12 @@
 					"regalia": "доктор сельскохозяйственных наук, профессор",
 					"photo": "vorokov_vitaliy_hakyashevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-84",
+						"link": "tel:+78612215784"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2219,7 +2315,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 146
+											"score": 161
 										},
 										{
 											"year": 2022,
@@ -2227,7 +2323,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 161
+											"score": 146
 										}
 									]
 								}
@@ -2322,6 +2418,12 @@
 					"regalia": "Кандидат технических наук, доцент",
 					"photo": "tituchenko_aleksey_anatolyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-39",
+						"link": "tel:+78612215839"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2378,7 +2480,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
@@ -2436,6 +2538,12 @@
 					"regalia": "Кандидат технических наук, доцент",
 					"photo": "tituchenko_aleksey_anatolyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-39",
+						"link": "tel:+78612215839"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2558,6 +2666,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "stepovoy_artem_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-05",
+						"link": "tel:+78612215805"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2729,6 +2843,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "stepovoy_artem_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-05",
+						"link": "tel:+78612215805"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -2787,7 +2907,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 146
+											"score": 158
 										},
 										{
 											"year": 2022,
@@ -2795,7 +2915,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 158
+											"score": 146
 										}
 									]
 								}
@@ -2815,7 +2935,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 164
+											"score": 195
 										},
 										{
 											"year": 2022,
@@ -2823,7 +2943,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 195
+											"score": 164
 										}
 									]
 								},
@@ -2832,7 +2952,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 108
+											"score": 99
 										},
 										{
 											"year": 2022,
@@ -2840,7 +2960,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 99
+											"score": 108
 										}
 									]
 								}
@@ -2900,6 +3020,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "osipov_mihail_alekseevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-40",
+						"link": "tel:+78612215840"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3016,6 +3142,12 @@
 					"regalia": "Кандидат экономических наук",
 					"photo": "kurnosov_sergei_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-73",
+						"link": "tel:+78612215773"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3178,6 +3310,12 @@
 					"regalia": "Кандидат экономических наук",
 					"photo": "kurnosov_sergei_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-73",
+						"link": "tel:+78612215773"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3213,15 +3351,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3295,6 +3433,12 @@
 					"regalia": "Кандидат экономических наук",
 					"photo": "kurnosov_sergei_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-73",
+						"link": "tel:+78612215773"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3330,15 +3474,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3373,15 +3517,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3485,6 +3629,12 @@
 					"regalia": "Кандидат экономических наук, доцент",
 					"photo": "kudryakov_vladimir_georgievich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-80",
+						"link": "tel:+78612215880"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3520,11 +3670,11 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
@@ -3563,15 +3713,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3643,6 +3793,12 @@
 					"regalia": "кандидат экономических наук, профессор",
 					"photo": "bondarenko_sergey_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-25",
+						"link": "tel:+78612215925"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3678,15 +3834,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3729,7 +3885,7 @@
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3787,6 +3943,12 @@
 					"regalia": "кандидат экономических наук, профессор",
 					"photo": "bondarenko_sergey_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-25",
+						"link": "tel:+78612215925"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3826,11 +3988,11 @@
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3847,7 +4009,7 @@
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								}
@@ -3863,15 +4025,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -3884,11 +4046,11 @@
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								}
@@ -3943,6 +4105,12 @@
 					"regalia": "кандидат экономических наук, профессор",
 					"photo": "bondarenko_sergey_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-25",
+						"link": "tel:+78612215925"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -3979,15 +4147,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4022,15 +4190,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4102,6 +4270,12 @@
 					"regalia": "Доктор экономических наук, профессор",
 					"photo": "adamenko_aleksander_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-23",
+						"link": "tel:+78612215823"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -4166,6 +4340,12 @@
 					"regalia": "Доктор экономических наук, профессор",
 					"photo": "adamenko_aleksander_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-23",
+						"link": "tel:+78612215823"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -4201,15 +4381,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4244,15 +4424,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4261,15 +4441,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 110
+											"score": 105
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": 105
+											"score": 110
 										}
 									]
 								}
@@ -4324,6 +4504,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -4340,7 +4526,6 @@
 			},
 			"profile": "Менеджмент",
 			"speciality": "Производственный менеджмент",
-			"minScore": "175",
 			"education_levels": [
 				{
 					"name": "Бакалавриат",
@@ -4360,15 +4545,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4403,15 +4588,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4420,7 +4605,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
@@ -4428,7 +4613,7 @@
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								}
@@ -4483,6 +4668,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -4518,15 +4709,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4561,15 +4752,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4578,7 +4769,7 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": 111
+											"score": 125
 										},
 										{
 											"year": 2022,
@@ -4586,7 +4777,7 @@
 										},
 										{
 											"year": 2021,
-											"score": 125
+											"score": 111
 										}
 									]
 								}
@@ -4641,6 +4832,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -4721,15 +4918,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -4742,11 +4939,11 @@
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								}
@@ -4801,6 +4998,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -4915,6 +5118,12 @@
 					"regalia": "кандидат технических наук",
 					"photo": "shevchenko_andrey_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-47",
+						"link": "tel:+78612215947"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5114,6 +5323,12 @@
 					"regalia": "кандидат технических наук",
 					"photo": "shevchenko_andrey_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-47",
+						"link": "tel:+78612215947"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5202,11 +5417,11 @@
 										},
 										{
 											"year": 2022,
-											"score": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -5268,6 +5483,12 @@
 					"regalia": "Доктор юридических наук, профессор",
 					"photo": "kuemgieva_svetlana_aleksandrovna.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-93",
+						"link": "tel:+78612215893"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5313,7 +5534,7 @@
 										},
 										{
 											"year": 2021,
-											"score": null
+											"score": 0
 										}
 									]
 								},
@@ -5387,6 +5608,12 @@
 					"regalia": "Доктор экономических наук, доцент",
 					"photo": "semidotzky_viktor_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (989) 210-11-88",
+						"link": "tel:+79892101188"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5422,15 +5649,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"minScore": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"minScore": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"minScore": null
+											"score": 0
 										}
 									]
 								},
@@ -5439,15 +5666,15 @@
 									"minScore": [
 										{
 											"year": 2023,
-											"minScore": null
+											"score": 0
 										},
 										{
 											"year": 2022,
-											"minScore": null
+											"score": 0
 										},
 										{
 											"year": 2021,
-											"minScore": null
+											"score": 0
 										}
 									]
 								}
@@ -5502,6 +5729,12 @@
 					"regalia": "Доктор экономических наук, доцент",
 					"photo": "semidotzky_viktor_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (989) 210-11-88",
+						"link": "tel:+79892101188"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5558,13 +5791,19 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Серый ",
+					"first_name": "Дмитрий ",
+					"middle_name": "Гавриилович",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат технических наук",
+					"photo": "sery_dmitry_gavriilovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-15",
+						"link": "tel:+78612215915"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5622,13 +5861,19 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Курносов ",
+					"first_name": "Сергей ",
+					"middle_name": "Андреевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат экономических наук",
+					"photo": "kurnosov_sergei_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-73",
+						"link": "tel:+78612215773"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5671,13 +5916,19 @@
 			"requirements": [],
 			"extra": {
 				"head": {
-					"last_name": "",
-					"first_name": "",
-					"middle_name": "",
+					"last_name": "Курносов ",
+					"first_name": "Сергей ",
+					"middle_name": "Андреевич",
 					"rank": "Декан факультета",
-					"regalia": "",
-					"photo": ""
+					"regalia": "Кандидат экономических наук",
+					"photo": "kurnosov_sergei_andreevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-73",
+						"link": "tel:+78612215773"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5729,6 +5980,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "stepovoy_artem_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-05",
+						"link": "tel:+78612215805"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5778,6 +6035,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "stepovoy_artem_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-05",
+						"link": "tel:+78612215805"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5831,6 +6094,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "stepovoy_artem_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-05",
+						"link": "tel:+78612215805"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5884,6 +6153,12 @@
 					"regalia": "Кандидат технических наук",
 					"photo": "stepovoy_artem_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-05",
+						"link": "tel:+78612215805"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5934,6 +6209,12 @@
 					"regalia": "кандидат технических наук",
 					"photo": "belokur_kirill_alekseevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-44",
+						"link": "tel:+78612215944"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -5983,6 +6264,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "lebedovsky_ivan_anatolyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-43",
+						"link": "tel:+78612215843"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6032,6 +6319,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6079,6 +6372,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6143,6 +6442,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6192,6 +6497,12 @@
 					"regalia": "",
 					"photo": ""
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-43",
+						"link": "tel:+78612215843"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6231,6 +6542,12 @@
 					]
 				}
 			],
+			"phones": [
+				{
+					"text": "+7 (861) 221-57-92",
+					"link": "tel:+78612215792"
+				}
+			],
 			"requirements": [],
 			"extra": {
 				"head": {
@@ -6241,6 +6558,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "makarenko_aleksander_alexeevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+7 (861) 221-57-92",
+						"link": "tel:+78612215792"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6309,6 +6632,12 @@
 					"regalia": "Кандидат сельскохозяйственных наук",
 					"photo": "osipov_mihail_alekseevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-40",
+						"link": "tel:+78612215840"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6373,6 +6702,12 @@
 					"regalia": "Кандидат технических наук, доцент",
 					"photo": "tituchenko_aleksey_anatolyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-39",
+						"link": "tel:+78612215839"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6420,6 +6755,12 @@
 					"regalia": "доктор сельскохозяйственных наук, профессор",
 					"photo": "vorokov_vitaliy_hakyashevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-84",
+						"link": "tel:+78612215784"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6484,6 +6825,12 @@
 					"regalia": "доктор сельскохозяйственных наук, профессор",
 					"photo": "vorokov_vitaliy_hakyashevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-57-84",
+						"link": "tel:+78612215784"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6535,6 +6882,12 @@
 					"regalia": "кандидат экономических наук, профессор",
 					"photo": "bondarenko_sergey_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-25",
+						"link": "tel:+78612215925"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6595,6 +6948,12 @@
 					"regalia": "кандидат экономических наук, профессор",
 					"photo": "bondarenko_sergey_vasilyevich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-59-25",
+						"link": "tel:+78612215925"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6655,6 +7014,12 @@
 					"regalia": "Доктор экономических наук, доцент",
 					"photo": "semidotzky_viktor_aleksandrovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (989) 210-11-88",
+						"link": "tel:+79892101188"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6715,6 +7080,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6777,6 +7148,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6837,6 +7214,12 @@
 					"regalia": "Кандидат экономических наук, доцент",
 					"photo": "kudryakov_vladimir_georgievich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-80",
+						"link": "tel:+78612215880"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6897,6 +7280,12 @@
 					"regalia": "Доктор экономических наук",
 					"photo": "tyupakov_konstantin_eduardovich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-47",
+						"link": "tel:+78612215847"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -6944,6 +7333,12 @@
 					"regalia": "Кандидат экономических наук, доцент",
 					"photo": "kudryakov_vladimir_georgievich.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-80",
+						"link": "tel:+78612215880"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",
@@ -7010,6 +7405,12 @@
 					"regalia": "Доктор юридических наук, профессор",
 					"photo": "kuemgieva_svetlana_aleksandrovna.jpg"
 				},
+				"phones": [
+					{
+						"text": "+ 7 (861) 221-58-93",
+						"link": "tel:+78612215893"
+					}
+				],
 				"networks": [
 					{
 						"icon": "bx bxl-vk",

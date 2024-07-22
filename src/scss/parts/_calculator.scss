@@ -25,6 +25,13 @@
 		}
 	}
 
+	&:not([data-level="Бакалавриат/специалитет"]){
+		
+		& .graph-wrapper{
+			display: none;
+		}
+	}
+
 	& .section-wrapper{
 
 		// display: none;
@@ -96,18 +103,17 @@
 			justify-content: space-between;
 
 			& span{
-				border: 1px solid #ccc;
-				font-size: clamp(16px, 3vw, 18px);
+				font-size: clamp(14px, 3vw, 16px);
 				line-height: 1.4em;
 				padding: 0 10px;
 				background-color: #c0c0c0;
 				border-radius: 4px;
+				font-weight: 400;
 			}
 		}
 	}
 	
 	& .section-wrapper{
-		display: none;
 		padding: 40px 0;
 	}
 
@@ -172,6 +178,8 @@
 			text-align: center;
 			background-color: #E6F7F5;
 			color: $secondary;
+			mix-blend-mode: multiply;
+			text-transform: lowercase;
 		}
 
 		& .details{
@@ -267,6 +275,10 @@
 			text-align: center;
 			border-top: 1px solid #ccc;
 			padding-top: 10px;
+		}
+
+		& .graph-wrapper{
+			height: 200px;
 		}
 	}
 

@@ -17,6 +17,7 @@ class CardModal{
 
 		$('body').on('click', '#close-modal', this.closeModal);
 		$('body').on('change', '[name="modal-form"]', this.switchForm.bind(this));
+		document.documentElement.addEventListener('keyup', this.closeCardEsc.bind(this));
 
 		// Выбор формы обучения
 		let form = this.cardData.selectedForm?.name;
@@ -26,6 +27,12 @@ class CardModal{
 		setTimeout(() => {
 			$('.modal-wrapper').addClass('open');
 		}, 80);
+	}
+
+	closeCardEsc(e:KeyboardEvent){
+		if(e.key == "Escape"){
+			this.closeModal();
+		}
 	}
 
 	closeModal(){

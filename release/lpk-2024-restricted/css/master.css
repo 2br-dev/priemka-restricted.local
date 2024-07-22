@@ -12880,6 +12880,10 @@ body .large {
     display: none;
 }
 
+#output:not([data-level="Бакалавриат/специалитет"]) .graph-wrapper {
+    display: none;
+}
+
 #output .section-wrapper .section-content {
     display: grid;
     gap: 20px;
@@ -12952,16 +12956,15 @@ body .large {
 }
 
 #output .faculty-header h2 span {
-    border: 1px solid #ccc;
-    font-size: clamp(16px, 3vw, 18px);
+    font-size: clamp(14px, 3vw, 16px);
     line-height: 1.4em;
     padding: 0 10px;
     background-color: #c0c0c0;
     border-radius: 4px;
+    font-weight: 400;
 }
 
 #output .section-wrapper {
-    display: none;
     padding: 40px 0;
 }
 
@@ -13024,6 +13027,8 @@ body .large {
     text-align: center;
     background-color: #E6F7F5;
     color: #1FAD96;
+    mix-blend-mode: multiply;
+    text-transform: lowercase;
 }
 
 #output .spec-card .details {
@@ -13115,6 +13120,10 @@ body .large {
     text-align: center;
     border-top: 1px solid #ccc;
     padding-top: 10px;
+}
+
+#output .spec-card .graph-wrapper {
+    height: 200px;
 }
 
 #output .nulltext {

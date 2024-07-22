@@ -29,7 +29,7 @@ let modalTpl = `
 						{{/selectedForm.vacations.free.total}}
 						{{^selectedForm.vacations.free.total}}
 						<tr><td class="key">Всего мест</td><td class="value">
-							Мест нет
+							0
 						</td></tr>
 						{{/selectedForm.vacations.free.total}}
 						{{#selectedForm.vacations.free.main}}
@@ -66,7 +66,7 @@ let modalTpl = `
 						{{/selectedForm.vacations.paid.total}}
 						{{^selectedForm.vacations.paid.total}}
 						<tr><td class="key">Всего мест</td><td class="value">
-							Мест нет
+							0
 						</td></tr>
 						{{/selectedForm.vacations.paid.total}}
 						{{#selectedForm.vacations.paid.main}}
@@ -93,7 +93,11 @@ let modalTpl = `
 					<tbody>
 						<tr><td class="key">Факультет</td><td class="value">{{faculty.name}}</td></tr>
 						<tr><td class="key">Декан</td><td class="value">{{extra.head.last_name}} {{extra.head.first_name}} {{extra.head.middle_name}}</td></tr>
-						<tr><td class="key">Телефон</td><td class="value">{{extra.head.phone}}</td></tr>
+						<tr><td class="key">Телефон</td>
+							{{#extra.phones.0}}
+							<td class="value">{{extra.phones.0.text}}</td>
+							{{/extra.phones.0}}
+						</tr>
 					</tbody>
 				</table>
 			</div>

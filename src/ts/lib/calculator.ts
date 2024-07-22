@@ -10,6 +10,12 @@ class Calculator{
 	filteredData:IData;
 	renderComplete?:()=>void
 
+	/**
+	 * 
+	 * @param container Контейнер
+	 * @param dataURL URL данных
+	 * @param renderComplete Callback по завершению
+	 */
 	constructor(container:HTMLElement | string, dataURL:string, renderComplete = () => {}){
 
 		this.renderComplete = renderComplete;
@@ -38,6 +44,7 @@ class Calculator{
 			.catch(err => console.error(err))
 	}
 
+	// Рендер результата
 	render(){
 		this.filter();
 		let preparedData = this.prepareData(this.filteredData.elements);
@@ -50,6 +57,7 @@ class Calculator{
 		this.renderComplete?.();
 	}
 
+	// Сброс параметров
 	reset(){
 		this.filterParams = {
 			quickSearch: "",
@@ -61,10 +69,7 @@ class Calculator{
 		}
 	}
 
-	/**
-	 * Фильтрация данных
-	 * @returns Данные, попадающие под фильтр IFilterProps
-	 */
+	// Фильтрация данных
 	filter(){
 
 		let outputArray = this.data.elements;
@@ -177,9 +182,7 @@ class Calculator{
 		this.filteredData = output;
 	}
 
-	/**
-	 * Сортировка секций
-	 */
+	// Сортировка секций
 	sortSections(sections: ISection[]):void{
 		sections.sort((a, b) => {
 			if (a.name < b.name) return -1;
@@ -188,13 +191,7 @@ class Calculator{
 		})
 	}
 
-	/**
-	 * Вставка в указанный индекс массива нового элемента
-	 * @param {Array<ICardData>} arr Входной массив
-	 * @param {number} index Индекс, куда поместить новый элемент
-	 * @param {ICardData} newElement Новый элемент
-	 * @returns {Array<ICardData>} Массив со вставленным элементом
-	 */
+	// Вставка в указанный индекс массива нового элемента
 	InsertArray(arr:Array<ICardData>, index:number, newElement:ICardData):ICardData[]{
 		let newArray =  [
 			...arr.slice(0,index),
@@ -204,10 +201,7 @@ class Calculator{
 		return newArray;
 	}
 
-	/**
-	 * Группировка данных перед передачей в шаблонизатор
-	 * @returns Сгруппированные данные IPreparedData
-	 */
+	// Группировка данных перед передачей в шаблонизатор
 	prepareData(elements:ICardData[]):IPreparedData{
 
 		if(!elements) return { sections: [] }
