@@ -75,10 +75,10 @@ function buildCharts() {
 					}
 				},
 				grid: {
-					left: '50px',
+					left: '40px',
 					right: '40px',
-					top: '40px',
-					bottom: '40px'
+					top: '60px',
+					bottom: '40px',
 				},
 				tooltip: {
 					trigger: 'item'
@@ -96,6 +96,7 @@ function buildCharts() {
 				  splitLine: {
 					show: false
 				  },
+				  show: false
 				  
 				},
 				series: [
@@ -111,6 +112,10 @@ function buildCharts() {
 					symbolSize: 10,
 					itemStyle: {
 					  color: '#1FAD96'
+					},
+					label: {
+						show: true,
+						position: 'top',
 					},
 					areaStyle: {
 					  color: new Charts.graphic.LinearGradient(0, 0, 0, 1, [
