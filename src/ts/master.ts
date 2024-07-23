@@ -11,9 +11,12 @@ let rowsVisible:boolean = false;
 // Инициализация
 $(() => {
 	calculator = new Calculator('#output', '/lpk-2024-restricted/data/data.json', () => {
+		
+		// Инициализация тултипов
 		M.Tooltip.init(document.querySelectorAll('.tooltipped'));
-		buildCharts();
-		$('.section-wrapper').hide();
+
+		// Подсветка предметов с балом выше установленного
+		indicateScores();
 	});
 
 	$('body').on('input', '[name="search"]', quickSearch); 			// Быстрый поиск
@@ -29,6 +32,7 @@ $(() => {
 	$('body').on('click', '.remark-close-trigger', closeRemark);	// Закрытие пояснения к стоимости по клику на X
 	$('body').on('click', '#toggle-rows', toggleRows);				// Переключение видимости строк
 	$('body').on('click', '#scroll-top', scrollTop);				// Переключение видимости строк
+	$(window).on('resize', updateCharts);							// Обновление ширины графиков
 
 	let output = document.querySelector('#output') as HTMLElement	
 	output.addEventListener('scroll', toggleUpButton)				// Отображение кнопки (прокрутить до верха)
@@ -37,10 +41,57 @@ $(() => {
 
 });
 
-// Построение графиков
-function buildCharts() {
+// Подсветка направления с минимальным баллом выше установленного
+function indicateScores() {
+	let minScore = calculator?.filterParams.minScore;
+
+	if(minScore !== null && minScore > 0){
+
+		document.querySelectorAll('.spec-card').forEach((element:Element) => {
+			let el = element as HTMLElement;
+			let idString = el.dataset['id'];
 	
+			if(idString !== null && idString !== ""){
+				let id = parseInt(idString);
+				let score = calculator?.getScore(id);
+	
+				if(score > minScore){
+					el.classList.add('overflow');
+				}
+			}
+		})
+	}
+}
+
+// Обновление ширины графиков
+function updateCharts(){
 	document.querySelectorAll('.graph-wrapper').forEach((element:Element) => {
+		let el = element as HTMLElement;
+		let chart = (el as any).chart;
+
+		if(chart !== null && chart !== undefined){
+			chart.resize();
+		}
+	});
+}
+
+// Чничтожение графиков
+function destroyCharts(container:HTMLDivElement){
+	container.querySelectorAll('.graph-wrapper').forEach((element:Element) => {
+		let el = element as HTMLElement;
+		let chart = (el as any).chart;
+		if(chart !== null && chart !== undefined){
+			chart.setOption({});
+			chart = null;
+			(el as any).chart = null;
+		}
+	});
+}
+
+// Построение графиков
+function buildCharts(container:HTMLDivElement) {
+	
+	container.querySelectorAll('.graph-wrapper').forEach((element:Element) => {
 		
 		// Читаем данные из атрибутов
 		let el = element as HTMLDivElement;
@@ -66,6 +117,7 @@ function buildCharts() {
 			let chart = Charts.init(el);
 
 			let options = {
+				animationDuration: 280,
 				title: {
 					text: 'Минимальный проходной балл в динамике',
 					left: 16,
@@ -133,7 +185,9 @@ function buildCharts() {
 				]
 			}
 
-			options && chart.setOption(options)
+			options && chart.setOption(options);
+
+			(el as any).chart = chart;
 		}
 	})
 }
@@ -165,10 +219,18 @@ function toggleRows(e?:JQuery.ClickEvent){
 		let $el = $(el);
 		if(rowsVisible){
 			$el.addClass('active');
-			$el.next().slideDown();
+			let $cardsWrapper = $el.next();
+
+			$cardsWrapper.slideDown('fast', null, () => {
+				buildCharts($cardsWrapper[0] as HTMLDivElement)
+			});
 		}else{
 			$el.removeClass('active');
-			$el.next().slideUp();
+			let $cardsWrapper = $el.next();
+
+			$cardsWrapper.slideUp('fast', null, () => {
+				destroyCharts($cardsWrapper[0] as HTMLDivElement)
+			});
 		}
 	});
 }
@@ -258,9 +320,15 @@ function toggleFaculty(e:JQuery.ClickEvent){
 	let classname = already ? "faculty-header" : "faculty-header active";
 	fheader[0].className = classname;
 
-	sectionCards.slideToggle({
-		duration: 'fast'
-	});
+	if(!already){
+		sectionCards.slideDown('fast', null, () => {
+			buildCharts(sectionCards[0]);
+		});
+	}else{
+		sectionCards.slideUp('fast', null, () => {
+			destroyCharts(sectionCards[0])
+		});
+	}
 
 	// Если хоть одна строка развёрнута
 	if($('.faculty-header.active').length > 0){
@@ -283,7 +351,6 @@ function filter(){
 	}
 	calculator?.render();
 	rowsVisible = false;
-	toggleRows();
 
 	if(!$('.faculty-header').length){
 		$('#toggle-rows').addClass('disabled');
@@ -321,13 +388,27 @@ function collectFilters(){
 
 }
 
+// Построение графиков в открытых факультетах
+function buildVisibleCharts(){
+	document.querySelectorAll('.faculty-header.active').forEach((element:Element) => {
+		let el = element as HTMLElement;
+		let cardsWrapper = el.nextElementSibling as HTMLDivElement;
+
+		if(cardsWrapper){
+			buildCharts(cardsWrapper);
+		}
+	})
+}
+
 // База образования
 function switchBase(){
 
 	let rows:boolean[] = SaveRowsVisibility();
 	calculator.filterParams.base = (document.querySelector('[name="base"]:checked') as HTMLInputElement).value === 'free' ? EducationBase.FREE : EducationBase.PAID;
 	calculator.render();
-	RestoreRowsVisibility(rows)
+	RestoreRowsVisibility(rows);
+	buildVisibleCharts();
+	indicateScores();
 	toggleRowsButton();
 
 }
@@ -340,6 +421,8 @@ function switchForm(){
 		calculator.filterParams.form = form;
 		calculator.render();
 		RestoreRowsVisibility(rows);
+		buildVisibleCharts();
+		indicateScores();
 		toggleRowsButton();
 	}
 }

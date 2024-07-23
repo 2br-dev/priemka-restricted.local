@@ -1,4 +1,4 @@
-import { EducationBase, ICardData, IData, IEducationForm, IEducationFreeBase, IEducationLevel, IEducationPaidBase, IFilterParams, IPreparedData, IRequirement, ISection } from './card_interfaces';
+import { EducationBase, ICardData, IData, IEducationForm, IEducationFreeBase, IEducationLevel, IEducationPaidBase, IFilterParams, IMinScore, IPreparedData, IRequirement, ISection } from './card_interfaces';
 import template from './template';
 
 class Calculator{
@@ -108,19 +108,23 @@ class Calculator{
 		})
 
 		// Минимальный балл
-		outputArray = outputArray.filter((card:ICardData) => {
+		outputArray.map((card:ICardData) => {
 			if(card.selectedForm){
 				let base:IEducationFreeBase | IEducationPaidBase = this.filterParams.base === EducationBase.FREE ? card.selectedForm.vacations.free : card.selectedForm.vacations.paid;
 				card.selectedBase = base;
 				card.selectedBase.name = this.filterParams.base === EducationBase.FREE ? "Бюджет" : "Договор";
-
-				if( this.filterParams.minScore !== null && base.minScore ){
-					return base.minScore[0].score < this.filterParams.minScore
-				}else{
-					return true
-				}
 			}
 		})
+
+		// Финансовая база
+		outputArray = outputArray.filter((card:ICardData) => {
+			if(card.selectedBase){
+				let base:IEducationFreeBase | IEducationPaidBase = this.filterParams.base === EducationBase.PAID ? card.selectedForm?.vacations.paid : card.selectedForm?.vacations.free;
+				card.selectedBase = base;
+				let baseTotal = typeof(base.total) === "string" ? parseInt(base.total) : base.total;
+				return baseTotal > 0;
+			}
+		});
 
 		// Быстрый поиск
 		outputArray = outputArray.filter((el:ICardData) => {
@@ -180,6 +184,34 @@ class Calculator{
 		}
 
 		this.filteredData = output;
+	}
+
+	// Получение минимального балла
+	getScore(id:number, year?: number):number{
+		let cards = this.filteredData.elements.filter((c:ICardData) => {
+			return c.id === id;
+		})
+
+		if(cards.length){
+			let card = cards[0];
+			
+			let score:IMinScore;
+
+			if(year !== null && year !== undefined){
+				score = card.selectedBase?.minScore.filter((val:IMinScore) => {
+					return val.year === year;
+				})[0];
+			}else{
+				if(card.selectedBase?.minScore){
+					score = card.selectedBase?.minScore[0];
+				}else{
+					score = null;
+					console.error(card.id);
+				}
+			}
+
+			return score.score
+		}
 	}
 
 	// Сортировка секций

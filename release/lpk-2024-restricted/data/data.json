@@ -916,7 +916,24 @@
 							"vacations": {
 								"free": {
 									"total": null,
-									"mainScore": [
+									"minScore": [
+										{
+											"year": 2023,
+											"score": 0
+										},
+										{
+											"year": 2022,
+											"score": 0
+										},
+										{
+											"year": 2021,
+											"score": 0
+										}
+									]
+								},
+								"paid": {
+									"total": 40,
+									"minScore": [
 										{
 											"year": 2023,
 											"score": 99
@@ -930,9 +947,6 @@
 											"score": 0
 										}
 									]
-								},
-								"paid": {
-									"total": 40
 								}
 							}
 						}
@@ -3877,6 +3891,23 @@
 									"minScore": [
 										{
 											"year": 2023,
+											"score": 0
+										},
+										{
+											"year": 2022,
+											"score": 0
+										},
+										{
+											"year": 2021,
+											"score": 0
+										}
+									]
+								},
+								"paid": {
+									"total": 25,
+									"minScore": [
+										{
+											"year": 2023,
 											"score": 105
 										},
 										{
@@ -3887,10 +3918,7 @@
 											"year": 2021,
 											"score": 0
 										}
-									]
-								},
-								"paid": {
-									"total": 25
+									]	
 								}
 							}
 						}

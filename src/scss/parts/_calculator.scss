@@ -34,12 +34,12 @@
 
 	& .section-wrapper{
 
-		// display: none;
+		display: none;
 
 		& .section-content{
 			display: grid;
 			gap: 20px;
-			grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: calc(50% - 10px) calc(50% - 10px);
 
 			@media(max-width: 1600px){
 				grid-template-columns: 1fr;
@@ -279,6 +279,13 @@
 
 		& .graph-wrapper{
 			height: 200px;
+		}
+
+		&.overflow{
+
+			& .card-header .min-score{
+				background-color: #c52424;
+			}
 		}
 	}
 

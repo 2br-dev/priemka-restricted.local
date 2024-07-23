@@ -22,6 +22,7 @@
 		transition: transform .4s;
 		transform: translateY(2vmax);
 		width: 1200px;
+		transform-origin: bottom center;
 
 		& .modal-header{
 

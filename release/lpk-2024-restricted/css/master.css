@@ -12884,10 +12884,14 @@ body .large {
     display: none;
 }
 
+#output .section-wrapper {
+    display: none;
+}
+
 #output .section-wrapper .section-content {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
 }
 
 @media (max-width: 1600px) {
@@ -13126,6 +13130,10 @@ body .large {
     height: 200px;
 }
 
+#output .spec-card.overflow .card-header .min-score {
+    background-color: #c52424;
+}
+
 #output .nulltext {
     height: 100%;
     border: 2px dashed #ccc;
@@ -13164,6 +13172,7 @@ body .large {
     transition: transform .4s;
     transform: translateY(2vmax);
     width: 1200px;
+    transform-origin: bottom center;
 }
 
 .modal-wrapper .modal .modal-header {
