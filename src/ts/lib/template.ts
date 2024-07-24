@@ -2,7 +2,7 @@ let template = `
 {{#sections}}
 <div class="faculty-header" data-faculty="{{name}}">
 	<div class="folder-arrow"></div>
-	<h2 class="no-margin">{{name}} <span>{{count}}</span></h2>
+	<h2 class="no-margin">{{name}} <span class="indicator {{indicator}}"><span class="available hide">{{count.available}} / </span>{{count.total}}</span></h2>
 </div>
 <div class="section-wrapper">
 	<div class="section-content">

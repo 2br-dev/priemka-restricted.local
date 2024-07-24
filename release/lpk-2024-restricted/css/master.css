@@ -12959,13 +12959,33 @@ body .large {
     justify-content: space-between;
 }
 
-#output .faculty-header h2 span {
+#output .faculty-header h2 .indicator {
     font-size: clamp(14px, 3vw, 16px);
     line-height: 1.4em;
     padding: 0 10px;
     background-color: #c0c0c0;
-    border-radius: 4px;
+    border-radius: 20px;
     font-weight: 400;
+    box-shadow: 0 0 0 1px #1FAD96 inset;
+    background-color: transparent;
+}
+
+#output .faculty-header h2 .indicator.i-green {
+    color: #1FAD96;
+    background-color: rgba(31, 173, 150, 0.2);
+    box-shadow: none;
+}
+
+#output .faculty-header h2 .indicator.i-orange {
+    color: #1FAD96;
+    box-shadow: 0 0 0 1px #1FAD96 inset;
+    background-color: transparent;
+}
+
+#output .faculty-header h2 .indicator.i-red {
+    box-shadow: none;
+    color: #BD0A08;
+    background-color: #FDC2BF;
 }
 
 #output .section-wrapper {

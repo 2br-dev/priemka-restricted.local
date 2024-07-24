@@ -357,6 +357,8 @@ function filter(){
 	}else{
 		$('#toggle-rows').removeClass('disabled');
 	}
+
+	$('.available').removeClass('hide');
 }
 
 // Сброс фильтров
@@ -369,6 +371,8 @@ function reset(){
 	$('#toggle-rows').text('Развернуть все');
 	rowsVisible = false;
 	calculator?.render();
+
+	$('.available').addClass('hide');
 }
 
 // Сбор данных фильтров
@@ -411,6 +415,10 @@ function switchBase(){
 	indicateScores();
 	toggleRowsButton();
 
+	if(calculator.filterParams.minScore !== null && calculator.filterParams.minScore > 0){
+		$('.available').removeClass('hide');
+	}
+
 }
 
 // Форма образования
@@ -424,6 +432,10 @@ function switchForm(){
 		buildVisibleCharts();
 		indicateScores();
 		toggleRowsButton();
+
+		if(calculator.filterParams.minScore !== null && calculator.filterParams.minScore > 0){
+			$('.available').removeClass('hide');
+		}
 	}
 }
 

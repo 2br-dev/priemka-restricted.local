@@ -108,7 +108,11 @@ export interface IData{
 export interface ISection{
 	name: string,
 	sectionContent: ICardData[];
-	count: number
+	count: {
+		available: number,
+		total: number,
+	},
+	indicator: string
 }
 
 export interface IPreparedData{

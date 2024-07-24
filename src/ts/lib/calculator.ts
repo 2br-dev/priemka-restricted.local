@@ -41,7 +41,7 @@ class Calculator{
 				this.data = data;
 				this.render()
 			})
-			.catch(err => console.error(err))
+			// .catch(err => console.error(err))
 	}
 
 	// Рендер результата
@@ -252,22 +252,60 @@ class Calculator{
 			})
 
 			let section:ISection;
+			let available:boolean;
 
 			if(sectionNeedle.length === 0){
 				section = {
 					name: card.faculty.name,
 					sectionContent: [card],
-					count: 1
+					count: {
+						available: 0,
+						total: 0
+					},
+					indicator: ""
 				}
 				preparedData.sections.push(section);
 			}else{
+
 				section = sectionNeedle[0];
+				
 				section.sectionContent.push(card);
-				section.count++;
+				
+				section.count = {
+					available: 0,
+					total: 0
+				};
+
+				section.indicator = "";
 			}
 		})
 
 		this.sortSections(preparedData.sections);
+
+		preparedData.sections.forEach((s:ISection) => {
+			let total = s.sectionContent.length;
+			let available:number;
+			if(this.filterParams.minScore === 0 || this.filterParams.minScore === null){
+				available = total;
+			}else{
+				available = s.sectionContent.filter((c:ICardData) => {
+					return c.selectedBase?.minScore[0].score <= this.filterParams.minScore
+				}).length
+			}
+			let indicator = "";
+
+			switch(true){
+				case available === 0: indicator = "i-red"; break;
+				case available > 0 && available < total: indicator = "i-orange"; break;
+				case available === total: indicator = "i-green"; break;
+			}
+
+			s.indicator = indicator;
+			s.count = {
+				available: available,
+				total: total
+			};
+		})
 
 		if(preparedData.sections.length === 1 && preparedData.sections[0].name === "") preparedData = {sections: []};
 
