@@ -3,6 +3,8 @@ import { EducationBase, ICardData, IData } from "./lib/card_interfaces";
 import * as M from 'materialize-css';
 import CardModal from "./lib/card_modal";
 import * as Charts from 'echarts';
+import Tooltip from "./lib/tooltip";
+
 
 let calculator:Calculator;
 
@@ -11,12 +13,7 @@ let rowsVisible:boolean = false;
 // Инициализация
 $(() => {
 	calculator = new Calculator('#output', '/lpk-2024-restricted/data/data.json', () => {
-		
-		// Инициализация тултипов
-		M.Tooltip.init(document.querySelectorAll('.tooltipped'));
-
-		// Подсветка предметов с балом выше установленного
-		indicateScores();
+		let t = new Tooltip('.tooltipped');
 	});
 
 	$('body').on('input', '[name="search"]', quickSearch); 			// Быстрый поиск
@@ -34,34 +31,11 @@ $(() => {
 	$('body').on('click', '#scroll-top', scrollTop);				// Переключение видимости строк
 	$(window).on('resize', updateCharts);							// Обновление ширины графиков
 
-	let output = document.querySelector('#output') as HTMLElement	
-	output.addEventListener('scroll', toggleUpButton)				// Отображение кнопки (прокрутить до верха)
+	window.addEventListener('scroll', toggleUpButton)				// Отображение кнопки (прокрутить до верха)
 
 	$('body').on('click', '.spec-card', openModal);
 
 });
-
-// Подсветка направления с минимальным баллом выше установленного
-function indicateScores() {
-	let minScore = calculator?.filterParams.minScore;
-
-	if(minScore !== null && minScore > 0){
-
-		document.querySelectorAll('.spec-card').forEach((element:Element) => {
-			let el = element as HTMLElement;
-			let idString = el.dataset['id'];
-	
-			if(idString !== null && idString !== ""){
-				let id = parseInt(idString);
-				let score = calculator?.getScore(id);
-	
-				if(score > minScore){
-					el.classList.add('overflow');
-				}
-			}
-		})
-	}
-}
 
 // Обновление ширины графиков
 function updateCharts(){
@@ -194,13 +168,12 @@ function buildCharts(container:HTMLDivElement) {
 
 // Промотка наверх
 function scrollTop() {
-	let output = document.querySelector('#output') as HTMLElement
-	output.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
 }
 
 // Отображение кнопки (прокрутить до верха)
 function toggleUpButton(){
-	let scrollTop = (document.querySelector('#output') as HTMLElement).scrollTop;
+	let scrollTop = (document.documentElement as HTMLElement).scrollTop;
 	if(scrollTop > 20){
 		$('#scroll-top').addClass('visible');
 	}else{
@@ -412,7 +385,6 @@ function switchBase(){
 	calculator.render();
 	RestoreRowsVisibility(rows);
 	buildVisibleCharts();
-	indicateScores();
 	toggleRowsButton();
 
 	if(calculator.filterParams.minScore !== null && calculator.filterParams.minScore > 0){
@@ -430,7 +402,6 @@ function switchForm(){
 		calculator.render();
 		RestoreRowsVisibility(rows);
 		buildVisibleCharts();
-		indicateScores();
 		toggleRowsButton();
 
 		if(calculator.filterParams.minScore !== null && calculator.filterParams.minScore > 0){

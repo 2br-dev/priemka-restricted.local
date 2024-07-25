@@ -8,7 +8,7 @@ let template = `
 	<div class="section-content">
 	{{#sectionContent}}
 	<div class="spec-card-wrapper">
-		<div class="spec-card waves-effect hoverable z-depth-1" data-id="{{id}}" data-faculty="{{faculty.name}}" >
+		<div class="spec-card waves-effect hoverable z-depth-1 {{overflowClass}}" data-id="{{id}}" data-faculty="{{faculty.name}}" data-order="{{order}}" >
 			<div class="card-header">
 				<div class="speciality">
 					<h3 class="tooltipped" data-tooltip="{{speciality}}" data-position="top">{{speciality}}</h3>

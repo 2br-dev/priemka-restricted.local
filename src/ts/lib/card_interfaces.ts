@@ -69,6 +69,8 @@ export interface IFormSwitcher{
 
 export interface ICardData{
 	id?: number,
+	order?: number,
+	overflowClass?: string,
 	faculty: {
 		name: string,
 		about: string

@@ -220,6 +220,14 @@ class Calculator{
 			if (a.name < b.name) return -1;
 			if (a.name > b.name) return 1;
 			return 0;
+		});
+
+		sections.forEach((s:ISection) => {
+			s.sectionContent.sort((a, b) => {
+				if(a.order > b.order) return 1;
+				if(a.order < b.order) return -1;
+				return 0;
+			})
 		})
 	}
 
@@ -246,6 +254,16 @@ class Calculator{
 
 			card.necessary = card.requirements?.filter((r:IRequirement) => r.classname == 'required');
 			card.optional = card.requirements?.filter((r:IRequirement) => r.classname == 'optional');
+
+			let overflowClass = "";
+			let order:number = 0;
+			if(this.filterParams.minScore !== null){
+				overflowClass = card.selectedBase?.minScore[0].score > this.filterParams.minScore ? "overflow" : "";
+				order = overflowClass === "" ? 0 : 1;
+			}
+
+			card.overflowClass = overflowClass;
+			card.order = order;
 
 			let sectionNeedle = preparedData.sections.filter((s:ISection) => {
 				return s.name == card.faculty.name;
@@ -305,6 +323,8 @@ class Calculator{
 				available: available,
 				total: total
 			};
+
+
 		})
 
 		if(preparedData.sections.length === 1 && preparedData.sections[0].name === "") preparedData = {sections: []};
