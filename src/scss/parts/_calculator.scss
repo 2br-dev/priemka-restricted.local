@@ -111,6 +111,8 @@
 				font-weight: 400;
 				box-shadow: 0 0 0 1px $secondary inset;
 				background-color: transparent;
+				white-space: nowrap;
+				margin-right: 20px;
 
 				&.i-green{
 					color: $secondary;

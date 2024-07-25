@@ -12968,6 +12968,8 @@ body .large {
     font-weight: 400;
     box-shadow: 0 0 0 1px #1FAD96 inset;
     background-color: transparent;
+    white-space: nowrap;
+    margin-right: 20px;
 }
 
 #output .faculty-header h2 .indicator.i-green {
